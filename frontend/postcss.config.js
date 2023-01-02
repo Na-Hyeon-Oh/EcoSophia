@@ -9,6 +9,7 @@ module.exports = {
             },
             stage: 0                            // css 문법 사용 가능
         }),
+        require('precss'),
         require('postcss-nested'),
         require('autoprefixer'),
         require('postcss-custom-properties'),
