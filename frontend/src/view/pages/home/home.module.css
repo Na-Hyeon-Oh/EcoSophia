@@ -1,0 +1,8 @@
+@value point-indigo from '../../../assets/styles/colors.css';
+
+.home_container {
+    width: 100%;
+    background-color: rgba(46, 56, 152, 0.25);
+    display: flex;
+    margin-inside: 20px;
+}

@@ -1,0 +1,30 @@
+@value black from '../../../../assets/styles/colors.css';
+@value white from '../../../../assets/styles/colors.css';
+@value point-gray from '../../../../assets/styles/colors.css';
+@value box-shadow from '../../../../assets/styles/design.css';
+@value base-fonts from '../../../../assets/styles/fonts.css';
+
+.cardlist_container {
+    margin: 50px 50px 50px 25px;
+}
+
+.cardlist_title_container {
+    background-color: point-gray;
+    width: 160px;
+    height: 30px;
+    margin-bottom: 25px;
+    font-family: base-fonts;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardlist {
+    background-color: white;
+    width: 660px;
+    height: 140px;
+    box-shadow: box-shadow;
+}

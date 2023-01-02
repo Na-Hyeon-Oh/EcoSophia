@@ -1,0 +1,54 @@
+@value black from '../../../../assets/styles/colors.css';
+@value white from '../../../../assets/styles/colors.css';
+@value point-indigo from '../../../../assets/styles/colors.css';
+@value point-gray from '../../../../assets/styles/colors.css';
+@value accent-red from '../../../../assets/styles/colors.css';
+@value accent-blue from '../../../../assets/styles/colors.css';
+@value base-fonts from '../../../../assets/styles/fonts.css';
+@value box-shadow from '../../../../assets/styles/design.css';
+
+.calendar_container {
+    margin: 50px 25px 50px 50px;
+}
+
+.option_container {
+    background-color: point-gray;
+    width: 400px;
+    height: 30px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.option_container li {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    list-style-type: none;
+}
+
+.calendar {
+    background-color: white;
+    width: 1100px;
+    height: 700px;
+    box-shadow: box-shadow;
+}
+
+.calendar_top_design {
+    background-color: point-gray;
+    width: 1100px;
+    height: 10px;
+    display: flex;
+    justify-content: end;
+}
+
+.calendar_top_design div {
+    width: 10px;
+    height: 10px;
+    background-color: accent-red;
+}
+
+.calendar_top_design #black {
+    background-color: black;
+}
