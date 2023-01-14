@@ -1,4 +1,4 @@
-@value point-background-color from '../../../assets/styles/design.css';
+@value point-background-color from '../../../assets/styles/colors.css';
 
 .home_container {
     width: 100%;
