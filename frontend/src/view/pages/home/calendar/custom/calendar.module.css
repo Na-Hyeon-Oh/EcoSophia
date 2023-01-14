@@ -1,5 +1,6 @@
 @value black from '../../../../../assets/styles/colors.css';
 @value white from '../../../../../assets/styles/colors.css';
+@value point-gray from '../../../../../assets/styles/colors.css';
 @value point-indigo from '../../../../../assets/styles/colors.css';
 @value accent-red from '../../../../../assets/styles/colors.css';
 @value accent-blue from '../../../../../assets/styles/colors.css';
@@ -22,7 +23,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 .middle {
     padding: 0 base-padding;
@@ -56,7 +57,19 @@
     background-color: point-background-light-color;
     margin: 3px;
 }
+.cell.today {
+    color: point-indigo;
+    font-weight: bold;
+}
 .cell_container {
     padding: 2px 5px;
     font-size: 16px;
+}
+.cell_day {
+}
+.cell.not-valid {
+    color: point-gray;
+}
+.cell.selected {
+    color: point-indigo;
 }

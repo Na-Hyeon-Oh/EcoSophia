@@ -5,7 +5,10 @@ import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
 import { isSameMonth, isSameDay, addDays, parse } from 'date-fns';
 import styles from './calendar.module.css'
 
+import { CalendarType } from '../../../../../assets/enums/CalendarType';
+
 const CustomCalender = (props: any) => {
+    const [option, setOption] = useState(CalendarType.MONTHLY);
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -23,7 +26,7 @@ const CustomCalender = (props: any) => {
     return (
         <div className={styles.custom_calender}>
             {RenderHeader(currentMonth, prevMonth, nextMonth)}
-            <RenderDays />
+            {RenderDays()}
             {RenderCells(currentMonth, selectedDate, onDateClick)}
         </div>
     );
@@ -75,24 +78,20 @@ const RenderCells = ( currentMonth : Date, selectedDate : Date, onDateClick : an
             const cloneDay = day;
             days.push(
                 <div
-                    className = {styles.cell + ` ${
-                        !isSameMonth(day, monthStart)
-                            ? 'disabled'
-                            : isSameDay(day, selectedDate)
-                                ? 'selected'
-                                : format(currentMonth, 'M') !== format(day, 'M')
-                                    ? 'not-valid'
-                                    : 'valid'}`}
+                    className = {styles.cell
+                        + ` ${isSameDay(day, currentMonth) ? 'today' : ''}`
+                        + ` ${!isSameMonth(day, monthStart) ? '' 
+                            : isSameDay(day, selectedDate) ? 'selected' 
+                                : format(currentMonth, 'M') !== format(day, 'M') ? 'not-valid' : 'valid'}`}
                     key = {day.toString()}
-                    onClick = {() => onDateClick(cloneDay)}>
+                    onClick = {() => onDateClick(cloneDay)}
+                >
                     <div className = {styles.cell_container}>
-                        <span
-                            className={styles.cell_day + " " + format(currentMonth, 'M') !== format(day, 'M')
-                                ? 'text not-valid' : ''}>
-                        {formattedDate}
-                    </span>
+                        <span className = {format(currentMonth, 'M') !== format(day, 'M') ? 'not-valid' : ''}>
+                            {formattedDate}
+                        </span>
                     </div>
-                </div>,
+                </div>
             );
             day = addDays(day, 1);
         }

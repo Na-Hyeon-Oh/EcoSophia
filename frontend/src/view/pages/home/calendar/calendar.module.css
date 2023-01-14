@@ -21,13 +21,17 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
 
-.option_container li {
     color: white;
     font-size: base-font-size;
     font-weight: bold;
     list-style-type: none;
+}
+
+.option {
+}
+.option_selected {
+    color: black;
 }
 
 .calendar {
