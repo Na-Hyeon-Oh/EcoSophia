@@ -1,5 +1,6 @@
 import React from "react"
 
+import CustomCalendar from './custom/Calendar'
 import styles from './calendar.module.css'
 
 const CalendarContainer = () => {
@@ -25,6 +26,7 @@ const Calendar = () => {
     return (
         <div className = {styles.calendar}>
             <CalendarTopDesign/>
+            <CustomCalendar/>
         </div>
     )
 }

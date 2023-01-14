@@ -133,8 +133,6 @@ module.exports = function (webpackEnv) {
             config: false,
             plugins: !useTailwind
               ? [
-                  require('precss'),
-                  require('postcss-nested'),
                   'postcss-flexbugs-fixes',
                   [
                     'postcss-preset-env',
@@ -151,8 +149,6 @@ module.exports = function (webpackEnv) {
                   'postcss-normalize',
                 ]
               : [
-                  require('precss'),
-                  require('postcss-nested'),
                   'tailwindcss',
                   'postcss-flexbugs-fixes',
                   [

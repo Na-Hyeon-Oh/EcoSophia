@@ -1,10 +1,13 @@
 @value black from '../../../../assets/styles/colors.css';
 @value white from '../../../../assets/styles/colors.css';
 @value point-gray from '../../../../assets/styles/colors.css';
+@value accent-red from '../../../../assets/styles/colors.css';
+@value accent-blue from '../../../../assets/styles/colors.css';
 @value box-shadow from '../../../../assets/styles/design.css';
 @value base-fonts from '../../../../assets/styles/fonts.css';
 
 .report_container {
+    width: 90%;
     margin: 50px 50px 50px 25px;
 }
 
@@ -24,7 +27,29 @@
 
 .report {
     background-color: white;
-    width: 660px;
-    height: 450px;
+    width: 100%;
+    height: 42.5vh;
     box-shadow: box-shadow;
+}
+
+.report_income_expenditure_part {
+    padding: 40px;
+    font-family: base-fonts;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.report_income_expenditure_part div {
+    display: flex;
+    padding: 7.5px;
+}
+
+.report_income {
+    padding : 20px 0;
+    color: accent-red;
+}
+
+.report_expenditure {
+    padding: 20px 0;
+    color: accent-blue;
 }

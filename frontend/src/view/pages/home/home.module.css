@@ -1,8 +1,16 @@
-@value point-indigo from '../../../assets/styles/colors.css';
+@value point-background-color from '../../../assets/styles/design.css';
 
 .home_container {
     width: 100%;
-    background-color: rgba(46, 56, 152, 0.25);
+    background-color: point-background-color;
     display: flex;
+    justify-content: space-between;
     margin-inside: 20px;
+}
+
+.home_inner_container {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
