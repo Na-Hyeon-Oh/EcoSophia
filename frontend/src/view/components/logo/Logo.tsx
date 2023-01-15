@@ -4,9 +4,9 @@ import styles from './logo.module.css'
 
 const Logo = () => {
     return (
-        <div className = {styles.logo}>
-            EcoSophia
-        </div>
+        <a href="/home">
+            <div className = {styles.logo}> EcoSophia </div>
+        </a>
     )
 }
 
