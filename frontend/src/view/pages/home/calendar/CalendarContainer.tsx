@@ -22,13 +22,13 @@ const CalendarContainer = (props : any) => {
 const Option = ( selectedOption : any, onClick : any ) => {
     return (
         <div className = {styles.option_container}>
-            <li className = {selectedOption == CalendarType.MONTHLY ? styles.option_selected : styles.option}
+            <li className = {styles.option + ` ${selectedOption == CalendarType.MONTHLY ? styles.selected : ''}`}
                 key = {CalendarType.MONTHLY}
                 onClick = {() => onClick(CalendarType.MONTHLY)}> Monthly </li>
-            <li className = {selectedOption == CalendarType.WEEKLY ? styles.option_selected : styles.option}
+            <li className = {styles.option + ` ${selectedOption == CalendarType.WEEKLY ? styles.selected : ''}`}
                 key = {CalendarType.WEEKLY}
                 onClick = {() => onClick(CalendarType.WEEKLY)}> Weekly </li>
-            <li className = {selectedOption == CalendarType.DAILY ? styles.option_selected : styles.option}
+            <li className = {styles.option + ` ${selectedOption == CalendarType.DAILY ? styles.selected : ''}`}
                 key = {CalendarType.DAILY}
                 onClick = {() => onClick(CalendarType.DAILY)}> Daily </li>
         </div>

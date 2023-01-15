@@ -7,6 +7,7 @@
 @value base-fonts from '../../../../../assets/styles/fonts.css';
 @value base-font-size from '../../../../../assets/styles/fonts.css';
 @value base-padding from '../../../../../assets/styles/design.css';
+@value point-background-color from '../../../../../assets/styles/colors.css';
 @value point-background-light-color from '../../../../../assets/styles/colors.css';
 @value point-background-mild-color from '../../../../../assets/styles/colors.css';
 @value point-background-vague-color from '../../../../../assets/styles/colors.css';
@@ -34,6 +35,9 @@
 .arrow_navigator {
     padding: 0 base-padding;
     margin-top: 10px;
+}
+.arrow_navigator:hover {
+    color: point-background-color;
 }
 
 .days_row {
