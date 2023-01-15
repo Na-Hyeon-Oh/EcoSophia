@@ -1,5 +1,7 @@
 @value white from '../../../assets/styles/colors.css';
 @value base-fonts from '../../../assets/styles/fonts.css';
+@value margin-base: 30px;
+@value margin-side: 10px;
 
 .header {
     background-color: white;
@@ -16,14 +18,14 @@
 
 .card_menu {
     display: flex;
-    padding: 20px 30px;
+    padding: 20px margin-base;
 }
 
 .card_management {
     font-size: 20px;
     font-family: base-fonts;
     margin: 10px;
-    padding: 15px 20px;
+    padding: 15px margin-base;
 }
 
 .card_add {
@@ -33,7 +35,7 @@
 }
 
 .profile_container {
-    margin: 30px;
+    margin: margin-base margin-side margin-base margin-base;
 }
 
 .profile {

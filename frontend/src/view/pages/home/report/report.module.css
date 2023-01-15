@@ -5,10 +5,10 @@
 @value accent-blue from '../../../../assets/styles/colors.css';
 @value box-shadow from '../../../../assets/styles/design.css';
 @value base-fonts from '../../../../assets/styles/fonts.css';
+@value base-padding from '../../../../assets/styles/design.css';
 
 .report_container {
-    width: 90%;
-    margin: 50px 50px 50px 25px;
+    margin: base-padding;
 }
 
 .report_title_container {
@@ -27,13 +27,12 @@
 
 .report {
     background-color: white;
-    width: 100%;
-    height: 42.5vh;
+    padding: base-padding;
     box-shadow: box-shadow;
 }
 
 .report_income_expenditure_part {
-    padding: 40px;
+    padding: base-padding;
     font-family: base-fonts;
     font-weight: bold;
     font-size: 24px;
