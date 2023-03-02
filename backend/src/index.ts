@@ -5,17 +5,22 @@ import routes from './routes';
 import ErrorType from './dtos/errorType.interface';
 
 const app = express();
+const PORT = process.env.PORT || 8080;
 
 require('dotenv').config();
 
-connectDB();
+// view engine 설정
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
+//connectDB();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());                // request body를 express에서 json으로 받아옴
 
-app.use('/api', routes);      // /api 엔드포인트에 요청이 들어오면 api 폴더로 분기
+app.use('/api', routes);      // '/api' 엔드포인트에 요청이 들어오면 api 폴더로 분기
 
-app.use(function (err: ErrorType, req: Request, res: Response, next: NextFunction) {
+app.use(function (err: ErrorType, req: Request, res: Response) {
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "production" ? err : {};
 
@@ -24,14 +29,15 @@ app.use(function (err: ErrorType, req: Request, res: Response, next: NextFunctio
     res.render('error');
 });
 
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
+
+app.get('/', (req: Request, res: Response) => {
     res.send('Hello Express!');
 });
 
-app.listen('8000', () => {
+app.listen(PORT, () => {
     console.log(`
     ########################################
-       Server is listening on port 8000      
+       Server is listening on port 8080      
     ########################################
     `);
 }).on("error", (err) => {
