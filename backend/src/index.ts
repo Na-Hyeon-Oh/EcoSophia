@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8080;
 
 require('dotenv').config();
 
-// view engine 설정
+// template rendering engine 설정
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
@@ -17,6 +17,10 @@ app.set("views", "./views");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());                // request body를 express에서 json으로 받아옴
+
+app.get('/', (req: Request, res: Response) => {
+    res.send('Hello Express!');
+});
 
 app.use('/api', routes);      // '/api' 엔드포인트에 요청이 들어오면 api 폴더로 분기
 
@@ -27,11 +31,6 @@ app.use(function (err: ErrorType, req: Request, res: Response) {
     // render the error page
     res.status(err.status || 500);
     res.render('error');
-});
-
-
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello Express!');
 });
 
 app.listen(PORT, () => {
