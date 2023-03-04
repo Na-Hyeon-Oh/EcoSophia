@@ -1,11 +1,7 @@
 import { Request, Response, Router } from 'express';
 import UserRouter from './user.routes';
-import ExtAuthRouter from "./ext/auth.routes";
 
 const router: Router = Router();
-
-// openapi 본인인증 및 토큰 발급
-router.use('/openapi/auth', ExtAuthRouter)
 
 // user 계정 생성/관리
 router.use('/user', UserRouter);
