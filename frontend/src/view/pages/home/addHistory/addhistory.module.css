@@ -5,11 +5,11 @@
 @value base-fonts from '../../../../assets/styles/fonts.css';
 @value base-padding from '../../../../assets/styles/design.css';
 
-.cardlist_container {
+.addhistory_container {
     margin: base-padding;
 }
 
-.cardlist_title_container {
+.addhistory_title_container {
     background-color: point-gray;
     width: 160px;
     height: 30px;
@@ -23,7 +23,8 @@
     justify-content: center;
 }
 
-.cardlist {
+.addhistory {
+    font-family: base-fonts;
     background-color: white;
     padding: base-padding;
     box-shadow: box-shadow;

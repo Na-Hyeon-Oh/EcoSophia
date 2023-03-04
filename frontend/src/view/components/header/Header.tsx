@@ -16,21 +16,7 @@ const Header = () => {
 const Navigator = () => {
     return (
         <div className = {styles.navigator}>
-            <CardMenu/>
             <Profile/>
-        </div>
-    )
-}
-
-const CardMenu = () => {
-    return (
-        <div className = {styles.card_menu}>
-            <div className = {styles.card_management}>
-                Card 관리
-            </div>
-            <div className = {styles.card_add}>
-                +
-            </div>
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React from "react"
 
 import styles from './home.module.css'
 import CalendarContainer from './calendar/CalendarContainer'
-import CardListContainer from './cardList/CardListContainer'
+import AddHistoryContainer from './addHistory/AddHistoryContainer'
 import ReportContainer from './report/ReportContainer'
 
 const HomeContainer = () => {
@@ -10,7 +10,7 @@ const HomeContainer = () => {
         <div className = {styles.home_container}>
             <CalendarContainer/>
             <div className = {styles.home_inner_container}>
-                <CardListContainer/>
+                <AddHistoryContainer/>
                 <ReportContainer/>
             </div>
         </div>

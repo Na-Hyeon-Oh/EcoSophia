@@ -16,24 +16,6 @@
     display: flex;
 }
 
-.card_menu {
-    display: flex;
-    padding: 20px margin-base;
-}
-
-.card_management {
-    font-size: 20px;
-    font-family: base-fonts;
-    margin: 10px;
-    padding: 15px margin-base;
-}
-
-.card_add {
-    font-size: 60px;
-    font-family: base-fonts;
-    font-weight: bold;
-}
-
 .profile_container {
     margin: margin-base margin-side margin-base margin-base;
 }
