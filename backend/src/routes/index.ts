@@ -4,7 +4,7 @@ import ExtAuthRouter from "./ext/auth.routes";
 
 const router: Router = Router();
 
-// openapi 본인인증 및 코드 발급
+// openapi 본인인증 및 토큰 발급
 router.use('/openapi/auth', ExtAuthRouter)
 
 // user 계정 생성/관리
