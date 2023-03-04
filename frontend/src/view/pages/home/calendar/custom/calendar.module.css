@@ -14,7 +14,8 @@
 @value point-mild-color from '../../../../../assets/styles/colors.css';
 
 .custom_calender {
-    width: 80%;
+    width: 85%;
+    margin: 0px auto;
     padding: base-padding 50px;
     font-weight: 600;
     font-size: base-font-size;

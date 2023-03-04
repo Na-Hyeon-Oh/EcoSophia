@@ -13,8 +13,8 @@ const CalendarContainer = (props : any) => {
 
     return (
         <div className = {styles.calendar_container}>
-            { Option(calendarOption, onCalendarOptionClick) }
-            <Calendar />
+            { Option(calendarOption, onCalendarOptionClick)}
+            { Calendar(calendarOption) }
         </div>
     )
 }
@@ -35,11 +35,22 @@ const Option = ( selectedOption : any, onClick : any ) => {
     )
 }
 
-const Calendar = () => {
+const Calendar = ( calendarOption: any ) => {
+    const calendarType = () => {
+        switch(calendarOption) {
+            case CalendarType.MONTHLY:
+                return <CustomCalendar/>;
+            case CalendarType.WEEKLY:
+            case CalendarType.DAILY:
+            default:
+                return null;
+        }
+    };
+
     return (
         <div className = {styles.calendar}>
             <CalendarTopDesign/>
-            <CustomCalendar/>
+            { calendarType() }
         </div>
     )
 }

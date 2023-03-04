@@ -1,6 +1,7 @@
 @value black from '../../../../assets/styles/colors.css';
 @value white from '../../../../assets/styles/colors.css';
 @value point-gray from '../../../../assets/styles/colors.css';
+@value accent-red from '../../../../assets/styles/colors.css';
 @value box-shadow from '../../../../assets/styles/design.css';
 @value base-fonts from '../../../../assets/styles/fonts.css';
 @value base-padding from '../../../../assets/styles/design.css';
@@ -28,4 +29,33 @@
     background-color: white;
     padding: base-padding;
     box-shadow: box-shadow;
+}
+
+.addhistory_form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addhistory_form_section {
+    display: flex;
+    align-items: start;
+    min-height: 35px;
+    max-height: 40%;
+    margin: 0 30px 5px 0;
+}
+
+.addhistory_form_title {
+    margin-right: base-padding;
+}
+
+.addhistory_form_button Button {
+    color: black;
+    font-weight: bold;
+    font-family: base_fonts;
+}
+
+.addhistory_form_error {
+    color: accent-red;
+    font-size: 12px;
+    max-width: 150px;
 }

@@ -1,0 +1,5 @@
+@value base-fonts from '../../../assets/styles/fonts.css';
+
+.react-datepicker {
+    font-family: base-fonts;
+}

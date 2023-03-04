@@ -11,7 +11,7 @@
 @value point-background-color from '../../../../assets/styles/colors.css';
 
 .calendar_container {
-    width: 55%;
+    width: 57%;
     margin: base-padding;
 }
 
