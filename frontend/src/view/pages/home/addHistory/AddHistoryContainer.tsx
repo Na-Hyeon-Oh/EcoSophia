@@ -134,19 +134,16 @@ const AddHistoryForm = () => {
             <div className = {styles.addhistory_form}>
                 <div>
                     <div className = {styles.addhistory_form_section}>
-                        <div className = {styles.addhistory_form_title}>날짜</div>
+                        <div className = {styles.addhistory_form_title}>결제<br></br>수단</div>
                         <div>
-                            <ReactDatePicker key={key} date={date} onChange={setDate}/>
+                            <ReactDropDownList key={key} methodList={methodList} method={method} onChange={methodChangeHandler} />
+                        </div>
+                        <div>
+                            <Button onClick={methodAddButtonClickHandler}
+                                    style={{color: "black", fontSize: "1em"}}
+                            >+</Button>
                         </div>
                     </div>
-                    <div className = {styles.addhistory_form_section}>
-                        <div className = {styles.addhistory_form_title}>태그</div>
-                        <div>
-                            <ReactMultiSelect key={key}  tags={tags} onChange={tagChangeHandler}/>
-                        </div>
-                    </div>
-                </div>
-                <div>
                     <div className = {styles.addhistory_form_section}>
                         <div className = {styles.addhistory_form_title}>금액</div>
                         <div className = {styles.addhistory_form_content}>
@@ -204,15 +201,18 @@ const AddHistoryForm = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div>
                     <div className = {styles.addhistory_form_section}>
-                        <div className = {styles.addhistory_form_title}>결제<br></br>수단</div>
+                        <div className = {styles.addhistory_form_title}>날짜</div>
                         <div>
-                            <ReactDropDownList key={key} methodList={methodList} method={method} onChange={methodChangeHandler} />
+                            <ReactDatePicker key={key} date={date} onChange={setDate}/>
                         </div>
+                    </div>
+                    <div className = {styles.addhistory_form_section}>
+                        <div className = {styles.addhistory_form_title}>태그</div>
                         <div>
-                            <Button onClick={methodAddButtonClickHandler}
-                                    style={{color: "black", fontSize: "1em"}}
-                            >+</Button>
+                            <ReactMultiSelect key={key}  tags={tags} onChange={tagChangeHandler}/>
                         </div>
                     </div>
                 </div>
