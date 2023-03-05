@@ -1,6 +1,6 @@
 interface Tag {
-    id: string,
-    text: string,
+    id: number,
+    name: string,
 }
 
 export default Tag;

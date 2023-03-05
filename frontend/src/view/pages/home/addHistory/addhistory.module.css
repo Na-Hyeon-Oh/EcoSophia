@@ -41,11 +41,22 @@
     align-items: start;
     min-height: 35px;
     max-height: 40%;
-    margin: 0 30px 5px 0;
+    margin: 0 30px 10px 0;
 }
 
 .addhistory_form_title {
     margin-right: base-padding;
+}
+
+.addhistory_form_content_cost_type {
+    display: flex;
+    justify-content: start;
+    font-size: small;
+}
+
+.addhistory_form_content_cost_type div{
+    margin: 0 10px 0 0;
+    accent-color: black;
 }
 
 .addhistory_form_button Button {

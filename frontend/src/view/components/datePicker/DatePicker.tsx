@@ -1,25 +1,23 @@
 import { useState } from "react";
-import DatePicker from "react-datepicker";
+import DatePicker from "react-widgets/DatePicker";
 
-import "react-datepicker/dist/react-datepicker.css";
-import "./styles.css";
+import 'react-widgets/styles.css';
 
-const ReactDatePicker = ({ date, onChange }: ReactDatePickerProps) => {
-    const handleChange = (date: Date) => {
-        onChange(date);
-    };
-
+const ReactDatePicker = ({ key, date, onChange }: ReactDatePickerProps) => {
     return (
         <DatePicker
-            selected={date}
-            onChange={handleChange}
+            key={key}
+            defaultValue={date}
+            valueFormat={{ dateStyle: "medium" }}
+            onChange={onChange}
         />
     );
 }
 
 interface ReactDatePickerProps {
-    date: Date;
-    onChange: (date: Date) => void;
+    key: number;
+    date: Date | null | undefined;
+    onChange: (date: Date | null | undefined) => void;
 }
 
-export default ReactDatePicker
+export default ReactDatePicker;
