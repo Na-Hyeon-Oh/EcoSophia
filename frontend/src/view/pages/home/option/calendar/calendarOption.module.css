@@ -1,9 +1,9 @@
-@value point-gray from '../../../../assets/styles/colors.css';
-@value base-fonts from '../../../../assets/styles/fonts.css';
-@value base-font-size from '../../../../assets/styles/fonts.css';
-@value point-background-color from '../../../../assets/styles/colors.css';
+@value point-gray from '../../../../../assets/styles/colors.css';
+@value base-fonts from '../../../../../assets/styles/fonts.css';
+@value base-font-size from '../../../../../assets/styles/fonts.css';
+@value point-background-color from '../../../../../assets/styles/colors.css';
 
-.option_container {
+.calendar_option_container {
     background-color: point-gray;
     width: 400px;
     height: 30px;
@@ -19,12 +19,12 @@
     list-style-type: none;
 }
 
-.option {
+.calendar_option {
 }
-.option.selected {
+.calendar_option.selected {
     color: black;
 }
-.option:hover {
+.calendar_option:hover {
     color: point-background-color;
     cursor: pointer;
 }

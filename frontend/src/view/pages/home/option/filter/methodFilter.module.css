@@ -1,0 +1,5 @@
+@value base-padding from '../../../../../assets/styles/design.css';
+
+.method_filter {
+    margin: 0 0 base-padding 0;
+}

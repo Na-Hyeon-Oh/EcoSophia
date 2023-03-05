@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import CustomCalendar from './custom/Calendar';
-import CustomWeeklyCalendar from './custom/WeeklyCalendar';
-import CustomDailyCalendar from './custom/DailyCalendar';
+import CustomWeeklyCalendar from './custom/weeklyCalendar/WeeklyCalendar';
+import CustomDailyCalendar from './custom/dailyCalendar/DailyCalendar';
 import { CalendarType } from '../../../../assets/enums/CalendarType';
 
 import styles from './calendar.module.css';

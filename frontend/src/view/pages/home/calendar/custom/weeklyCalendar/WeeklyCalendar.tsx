@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { CalendarProps } from './CalendarProps.';
+import { CalendarProps } from '../CalendarProps.';
 import { Icon } from '@iconify/react';
 import { format, addWeeks, subWeeks } from 'date-fns';
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
 import { differenceInCalendarDays, isSameMonth, isSameDay, addDays, getISOWeek } from 'date-fns';
 
-import styles from './calendar.module.css'
+import styles from '../calendar.module.css'
 
 const CustomWeeklyCalender = ({ todayDT, setTodayDT, currentDT, setCurrentDT, selectedDate, setSelectedDate }: CalendarProps) => {
     const prevWeek = () : void => {

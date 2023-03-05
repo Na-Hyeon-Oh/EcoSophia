@@ -3,25 +3,14 @@ import { Method } from '../../../model/Method';
 
 import 'react-widgets/styles.css';
 
-const ReactDropDownList = ({ key, methodList, method, onChange } : ReactDropdownListProps) => {
-    const getDefaultValue = () : number => {
-        let result: number = 0
-        for (let element of methodList) {
-            if (method.id === element.id && method.name === element.name) {
-                result = method.id;
-                break;
-            }
-        }
-        return result;
-    }
-
+const ReactDropDownList = ({ key, data, value, onChange } : ReactDropdownListProps) => {
     return (
       <DropdownList
           key={key}
           dataKey="id"
           textField="name"
-          defaultValue={getDefaultValue()}
-          data={methodList}
+          defaultValue={value}
+          data={data}
           filter="contains"
           onChange={onChange}
           style={{ width: "250px"}}
@@ -31,9 +20,9 @@ const ReactDropDownList = ({ key, methodList, method, onChange } : ReactDropdown
 
 interface ReactDropdownListProps {
     key: number;
-    methodList: Array<Method>;
-    method: Method;
-    onChange: (method: Method) => void;
+    data: Array<any>;
+    value: any;
+    onChange: (method: any) => void;
 }
 
 export default ReactDropDownList;

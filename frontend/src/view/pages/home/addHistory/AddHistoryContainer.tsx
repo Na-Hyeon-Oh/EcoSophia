@@ -7,12 +7,13 @@ import Button from "@mui/material/Button";
 import History from "../../../../model/History";
 import NumberUtils from '../../../../assets/utils/NumberUtils';
 import Tag from '../../../../model/Tag';
+import { tagList } from '../../../../assets/tagList/tagList';
 import { Method } from '../../../../model/Method';
 import { MethodType } from '../../../../assets/enums/MethodType';
 
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../../../assets/styles/muiTheme';
-import styles from './addhistory.module.css';
+import styles from './addHistory.module.css';
 
 const AddHistoryContainer = () => {
     return (
@@ -63,6 +64,17 @@ const AddHistoryForm = () => {
     const [isValidCost, setIsValidCost] = useState(false);
     const [key, setKey] = useState(0);                              // for initialize the state of /react-widgets..
 
+    const getMethodValue = () : number => {
+        let result: number = 0
+        for (let element of methodList) {
+            if (method.id === element.id && method.name === element.name) {
+                result = method.id;
+                break;
+            }
+        }
+        return result;
+    }
+
     const methodChangeHandler = (method: Method) => {
         setMethod(method);
     };
@@ -88,6 +100,18 @@ const AddHistoryForm = () => {
         let isValidSize: boolean = event.target.value.length >= 0 ? true : false;
         setIsValidContent(isValidSize);
         if(isValidSize) setContent(event.target.value);
+    }
+
+    const getTagValues = () : Array<number> => {
+        let result: Array<number> = []
+        if(tags != null) {
+            for (let tag of tagList) {
+                if (tags.find(element => element.id === tag.id && element.name === tag.name)) {
+                    result.push(tag.id);
+                }
+            }
+        }
+        return result;
     }
 
     const tagChangeHandler = (tags: Array<Tag>) => {
@@ -135,7 +159,7 @@ const AddHistoryForm = () => {
                     <div className = {styles.addhistory_form_section}>
                         <div className = {styles.addhistory_form_title}>결제<br></br>수단</div>
                         <div>
-                            <ReactDropDownList key={key} methodList={methodList} method={method} onChange={methodChangeHandler} />
+                            <ReactDropDownList key={key} data={methodList} value={method} onChange={methodChangeHandler} />
                         </div>
                         <div>
                             <Button onClick={methodAddButtonClickHandler}
@@ -211,7 +235,7 @@ const AddHistoryForm = () => {
                     <div className = {styles.addhistory_form_section}>
                         <div className = {styles.addhistory_form_title}>태그</div>
                         <div>
-                            <ReactMultiSelect key={key}  tags={tags} onChange={tagChangeHandler}/>
+                            <ReactMultiSelect key={key} values={getTagValues()} data={tagList} onChange={tagChangeHandler} width="200px"/>
                         </div>
                     </div>
                 </div>

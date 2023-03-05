@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { CalendarProps } from './CalendarProps.';
+import { CalendarProps } from '../CalendarProps.';
 import { Icon } from '@iconify/react';
 import { format, addDays, subDays } from 'date-fns';
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
 import { differenceInCalendarDays, isSameMonth, isSameDay } from 'date-fns';
 
-import styles from './calendar.module.css'
+import styles from '../calendar.module.css'
 
 const CustomDailyCalender = ({ todayDT, setTodayDT, selectedDate, setSelectedDate }: CalendarProps) => {
     const prevDay = () : void => {
