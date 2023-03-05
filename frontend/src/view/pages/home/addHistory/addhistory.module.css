@@ -46,6 +46,7 @@
 
 .addhistory_form_title {
     margin-right: base-padding;
+    min-width: 30px;
 }
 
 .addhistory_form_content_cost_type {

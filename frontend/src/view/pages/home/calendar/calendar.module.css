@@ -11,7 +11,7 @@
 @value point-background-color from '../../../../assets/styles/colors.css';
 
 .calendar_container {
-    width: 57%;
+    width: 60%;
     margin: base-padding;
 }
 
@@ -43,6 +43,7 @@
 .calendar {
     background-color: white;
     width: 100%;
+    min-width: 800px;
     box-shadow: box-shadow;
     padding: 0 0 base-padding 0;
 }
@@ -63,4 +64,11 @@
 
 .calendar_top_design #black {
     background-color: black;
+}
+
+
+@media (max-width: 1380px) {
+    .calendar_container {
+        width: 100%;
+    }
 }

@@ -58,6 +58,7 @@
 .cells_row {
     display: flex;
     justify-content: space-between;
+    min-width: 700px;
 }
 .cell {
     width: 100%;
