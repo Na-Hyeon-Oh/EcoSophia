@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
+
+import { CalendarProps } from './CalendarProps.';
 import { Icon } from '@iconify/react';
 import { format, addMonths, subMonths } from 'date-fns';
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
-import { differenceInCalendarDays, isSameMonth, isSameDay, addDays, parse } from 'date-fns';
+import { differenceInCalendarDays, isSameMonth, isSameDay, addDays } from 'date-fns';
+
 import styles from './calendar.module.css'
 
-import { CalendarType } from '../../../../../assets/enums/CalendarType';
-
-const CustomCalender = (props: any) => {
-    const [todayDT, setTodayDT] = useState(new Date());
-    const [currentDT, setCurrentDT] = useState(new Date());
-    const [selectedDate, setSelectedDate] = useState(new Date());
-
+const CustomCalender = ({ todayDT, setTodayDT, currentDT, setCurrentDT, selectedDate, setSelectedDate }: CalendarProps) => {
     const prevMonth = () : void => {
         setCurrentDT(subMonths(currentDT, 1));
     };
@@ -79,7 +76,7 @@ const RenderCells = ( todayDT: Date, currentDT : Date, selectedDate : Date, onDa
             days.push(
                 <div
                     className = {styles.cell
-                        + ` ${differenceInCalendarDays(day, todayDT) == 0 ? styles.today : ''}`
+                        + ` ${differenceInCalendarDays(day, todayDT) === 0 ? styles.today : ''}`
                         + ` ${!isSameMonth(day, monthStart) ? '' 
                             : isSameDay(day, selectedDate) ? styles.selected 
                                 : format(currentDT, 'M') !== format(day, 'M') ? styles.invalid : ''}`}

@@ -7,7 +7,8 @@ import Button from "@mui/material/Button";
 import History from "../../../../model/History";
 import NumberUtils from '../../../../assets/utils/NumberUtils';
 import Tag from '../../../../model/Tag';
-import { Method, MethodType } from '../../../../model/Method';
+import { Method } from '../../../../model/Method';
+import { MethodType } from '../../../../assets/enums/MethodType';
 
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../../../assets/styles/muiTheme';
@@ -25,7 +26,7 @@ const AddHistoryContainer = () => {
 const Title = () => {
     return (
         <div className = {styles.addhistory_title_container}>
-            내역 추가
+            History
         </div>
     )
 }
@@ -60,7 +61,6 @@ const AddHistoryForm = () => {
     const [tags, setTags] = useState<Array<Tag>>([]);
     const [isValidContent, setIsValidContent] = useState(false);
     const [isValidCost, setIsValidCost] = useState(false);
-    const [isFormComplete, setIsFormComplete] = useState(0);        // 0: initialized, 1: cost|content, 2: cost&content
     const [key, setKey] = useState(0);                              // for initialize the state of /react-widgets..
 
     const methodChangeHandler = (method: Method) => {
@@ -125,7 +125,6 @@ const AddHistoryForm = () => {
         setContent("");
         setCost("0");
         setTags([]);
-        setIsFormComplete(0);
         setKey(prevKey => prevKey + 1);
     }
 
@@ -178,7 +177,7 @@ const AddHistoryForm = () => {
                                 style={{minWidth:250}}
                             ></TextField>
                             <div className={styles.addhistory_form_error}
-                                 style={{display: cost == "0" ? "block" : "none"}}>
+                                 style={{display: cost === "0" ? "block" : "none"}}>
                                 {
                                     isValidCost ? "잘못된 금액 형식입니다." : "금액은 필수 입력란입니다."
                                 }
@@ -196,7 +195,7 @@ const AddHistoryForm = () => {
                                 style={{minWidth: 250}}
                             ></TextField>
                             <div className={styles.addhistory_form_error}
-                                  style={{display: content.length == 0 ? "block" : "none"}}>
+                                  style={{display: content.length === 0 ? "block" : "none"}}>
                                 내용은 필수 입력란입니다.
                             </div>
                         </div>
@@ -220,7 +219,7 @@ const AddHistoryForm = () => {
                 <div className = {styles.addhistory_form_button}>
                     <ThemeProvider theme={theme}>
                         <Button variant="contained" color="primary"
-                                onClick={submitHandler} disabled={ cost == "0" || content.length == 0 }
+                                onClick={submitHandler} disabled={ cost === "0" || content.length === 0 }
                         >추가</Button>
                     </ThemeProvider>
                 </div>

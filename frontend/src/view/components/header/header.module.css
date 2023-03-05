@@ -23,3 +23,6 @@
 .profile {
     width: 50px;
 }
+.profile:hover {
+    cursor: pointer;
+}

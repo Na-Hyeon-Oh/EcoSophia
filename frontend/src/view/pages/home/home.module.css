@@ -9,7 +9,12 @@
     padding: base-padding;
 }
 
-.home_inner_container {
+.home_left_container {
+    width: 60%;
+    margin: base-padding;
+}
+
+.home_right_container {
     min-width: 36%;
     display: flex;
     flex-direction: column;
@@ -19,5 +24,9 @@
 @media (max-width: 1380px) {
     .home_container {
         display: block;
+    }
+
+    .home_left_container {
+        width: 100%;
     }
 }

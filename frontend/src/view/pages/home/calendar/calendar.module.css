@@ -4,41 +4,8 @@
 @value point-gray from '../../../../assets/styles/colors.css';
 @value accent-red from '../../../../assets/styles/colors.css';
 @value accent-blue from '../../../../assets/styles/colors.css';
-@value base-fonts from '../../../../assets/styles/fonts.css';
-@value base-font-size from '../../../../assets/styles/fonts.css';
 @value box-shadow from '../../../../assets/styles/design.css';
 @value base-padding from '../../../../assets/styles/design.css';
-@value point-background-color from '../../../../assets/styles/colors.css';
-
-.calendar_container {
-    width: 60%;
-    margin: base-padding;
-}
-
-.option_container {
-    background-color: point-gray;
-    width: 400px;
-    height: 30px;
-    margin-bottom: 25px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    color: white;
-    font-family: base-fonts;
-    font-size: base-font-size;
-    font-weight: bold;
-    list-style-type: none;
-}
-
-.option {
-}
-.option.selected {
-    color: black;
-}
-.option:hover {
-    color: point-background-color;
-}
 
 .calendar {
     background-color: white;
@@ -64,11 +31,4 @@
 
 .calendar_top_design #black {
     background-color: black;
-}
-
-
-@media (max-width: 1380px) {
-    .calendar_container {
-        width: 100%;
-    }
 }

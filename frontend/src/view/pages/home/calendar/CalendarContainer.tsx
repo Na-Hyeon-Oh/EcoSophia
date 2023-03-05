@@ -1,47 +1,25 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
-import CustomCalendar from './custom/Calendar'
-import styles from './calendar.module.css'
+import CustomCalendar from './custom/Calendar';
+import CustomWeeklyCalendar from './custom/WeeklyCalendar';
+import CustomDailyCalendar from './custom/DailyCalendar';
 import { CalendarType } from '../../../../assets/enums/CalendarType';
 
-const CalendarContainer = (props : any) => {
-    const [calendarOption, setCalendarOption] = useState(CalendarType.MONTHLY);
+import styles from './calendar.module.css';
 
-    const onCalendarOptionClick = (option : string) : void => {
-        setCalendarOption(option);
-    };
+const CalendarContainer = ({ option } : CalendarContainerProps) => {
+    const [todayDT, setTodayDT] = useState(new Date());
+    const [currentDT, setCurrentDT] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
-    return (
-        <div className = {styles.calendar_container}>
-            { Option(calendarOption, onCalendarOptionClick)}
-            { Calendar(calendarOption) }
-        </div>
-    )
-}
-
-const Option = ( selectedOption : any, onClick : any ) => {
-    return (
-        <div className = {styles.option_container}>
-            <li className = {styles.option + ` ${selectedOption == CalendarType.MONTHLY ? styles.selected : ''}`}
-                key = {CalendarType.MONTHLY}
-                onClick = {() => onClick(CalendarType.MONTHLY)}> Monthly </li>
-            <li className = {styles.option + ` ${selectedOption == CalendarType.WEEKLY ? styles.selected : ''}`}
-                key = {CalendarType.WEEKLY}
-                onClick = {() => onClick(CalendarType.WEEKLY)}> Weekly </li>
-            <li className = {styles.option + ` ${selectedOption == CalendarType.DAILY ? styles.selected : ''}`}
-                key = {CalendarType.DAILY}
-                onClick = {() => onClick(CalendarType.DAILY)}> Daily </li>
-        </div>
-    )
-}
-
-const Calendar = ( calendarOption: any ) => {
     const calendarType = () => {
-        switch(calendarOption) {
+        switch(option) {
             case CalendarType.MONTHLY:
-                return <CustomCalendar/>;
+                return <CustomCalendar todayDT={todayDT} setTodayDT={setTodayDT} currentDT={currentDT} setCurrentDT={setCurrentDT} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>;
             case CalendarType.WEEKLY:
+                return <CustomWeeklyCalendar todayDT={todayDT} setTodayDT={setTodayDT} currentDT={currentDT} setCurrentDT={setCurrentDT} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
             case CalendarType.DAILY:
+                return <CustomDailyCalendar todayDT={todayDT} setTodayDT={setTodayDT} currentDT={currentDT} setCurrentDT={setCurrentDT} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
             default:
                 return null;
         }
@@ -62,6 +40,10 @@ const CalendarTopDesign = () => {
             <div id = {"black"}></div>
         </div>
     )
+}
+
+interface CalendarContainerProps {
+    option: CalendarType;
 }
 
 export default CalendarContainer

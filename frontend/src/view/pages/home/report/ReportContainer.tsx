@@ -1,9 +1,10 @@
-import React from "react"
+import React from "react";
+import Chart from './chart/Chart';
+import { CalendarType } from '../../../../assets/enums/CalendarType';
 
-import styles from './report.module.css'
-import Chart from './chart/Chart'
+import styles from './report.module.css';
 
-const ReportContainer = () => {
+const ReportContainer = ({ option } : ReportContainerProps) => {
     return (
         <div className = {styles.report_container}>
             <Title/>
@@ -35,6 +36,10 @@ const Report = () => {
             </div>
         </div>
     )
+}
+
+interface ReportContainerProps {
+    option: CalendarType;
 }
 
 export default ReportContainer

@@ -55,6 +55,10 @@
     font-size: small;
 }
 
+.addhistory_form_content_cost_type input:hover {
+    cursor: pointer;
+}
+
 .addhistory_form_content_cost_type div{
     margin: 0 10px 0 0;
     accent-color: black;
