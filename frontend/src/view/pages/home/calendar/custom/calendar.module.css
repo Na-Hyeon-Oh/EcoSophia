@@ -16,6 +16,7 @@
 .custom_calender {
     margin: 0 auto;
     padding: base-padding 50px;
+    font-family: base-fonts;
     font-weight: 600;
     font-size: base-font-size;
     color: black;
@@ -84,4 +85,25 @@
 }
 .invalid {
     color: point-gray;
+}
+
+.histories {
+    margin: auto;
+    font-weight: normal;
+    text-align: center;
+}
+.invalid_histories, .invalid_history {
+    display: none
+}
+.history_income {
+    color: accent-red;
+}
+.history_expense {
+    color: accent-blue;
+}
+
+@media (max-width: 800px) {
+    .histories {
+        font-size: small;
+    }
 }

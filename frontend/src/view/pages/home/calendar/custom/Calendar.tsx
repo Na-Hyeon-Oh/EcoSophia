@@ -5,6 +5,10 @@ import { Icon } from '@iconify/react';
 import { format, addMonths, subMonths } from 'date-fns';
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
 import { differenceInCalendarDays, isSameMonth, isSameDay, addDays } from 'date-fns';
+import NumberUtils from '../../../../../assets/utils/NumberUtils';
+import DateUtils from '../../../../../assets/utils/DateUtils';
+
+import {testData} from '../../../../../assets/testData';
 
 import styles from './calendar.module.css'
 
@@ -73,6 +77,16 @@ const RenderCells = ( todayDT: Date, currentDT : Date, selectedDate : Date, onDa
         for (let i = 0; i < 7; i++) {
             formattedDate = format(day, 'd');
             const cloneDay = day;
+            let incomeSum: number = 0;
+            let expenseSum: number = 0;
+            for (let i = 0; i < testData.length; i++) {
+                if (DateUtils(cloneDay, testData[i].date).isSameDate()) {
+                    if (testData[i].price > 0) incomeSum += testData[i].price;
+                    else expenseSum += testData[i].price;
+                }
+            }
+            let income: string = NumberUtils(incomeSum.toString()).addComma();
+            let expense: string = NumberUtils(expenseSum.toString()).addComma();
             days.push(
                 <div
                     className = {styles.cell
@@ -87,6 +101,10 @@ const RenderCells = ( todayDT: Date, currentDT : Date, selectedDate : Date, onDa
                         <span className = {format(currentDT, 'M') !== format(day, 'M') ? styles.invalid : ''}>
                             {formattedDate}
                         </span>
+                        <div className={format(currentDT, 'M') !== format(day, 'M') ? styles.invalid_histories : styles.histories} >
+                            <div className={incomeSum > 0 ? styles.history_income : styles.invalid_history}>+{income}</div>
+                            <div className={expenseSum < 0 ? styles.history_expense : styles.invalid_history}>{expense}</div>
+                        </div>
                     </div>
                 </div>
             );

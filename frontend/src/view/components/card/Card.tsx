@@ -15,6 +15,7 @@ const Card = ({smallLeftText, smallRightText, leftText, rightText, tags, color} 
                   style={{
                       backgroundColor:ColorUtils().getRandomColor(),
                       fontSize:"12px",
+                      fontWeight:"600",
                       marginRight: "5px"
             }}/>
         );
