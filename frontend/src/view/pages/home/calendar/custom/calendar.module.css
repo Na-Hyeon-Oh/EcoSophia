@@ -14,7 +14,6 @@
 @value point-mild-color from '../../../../../assets/styles/colors.css';
 
 .custom_calender {
-    width: 85%;
     margin: 0 auto;
     padding: base-padding 50px;
     font-weight: 600;
@@ -23,15 +22,15 @@
 }
 
 .header_container {
-    height: 50px;
+    margin: 10px base-padding 30px base-padding;
     font-size: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
 }
 .middle {
     padding: 0 base-padding;
+    text-align: center;
 }
 .arrow_navigator {
     padding: 0 base-padding;
@@ -59,7 +58,6 @@
 .cells_row {
     display: flex;
     justify-content: space-between;
-    min-width: 700px;
 }
 .cell {
     width: 100%;

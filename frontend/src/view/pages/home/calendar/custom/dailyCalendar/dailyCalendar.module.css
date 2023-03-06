@@ -1,0 +1,16 @@
+.cells_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.cells_container div {
+    flex-grow: 1;
+}
+
+@media (max-width: 800px) {
+    .cells_container {
+        flex-direction: column;
+    }
+}

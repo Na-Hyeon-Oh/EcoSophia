@@ -1,5 +1,7 @@
 @value base-padding from '../../../../../assets/styles/design.css';
+@value base-fonts from '../../../../../assets/styles/fonts.css';
 
 .method_filter {
+    font-family: base-fonts;
     margin: 0 0 base-padding 0;
 }

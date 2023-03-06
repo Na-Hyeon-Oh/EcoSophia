@@ -9,15 +9,12 @@
 
 .calendar {
     background-color: white;
-    width: 100%;
-    min-width: 800px;
     box-shadow: box-shadow;
     padding: 0 0 base-padding 0;
 }
 
 .calendar_top_design {
     background-color: point-gray;
-    width: 100%;
     height: 10px;
     display: flex;
     justify-content: end;

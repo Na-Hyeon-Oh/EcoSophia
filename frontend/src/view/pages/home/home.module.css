@@ -5,20 +5,25 @@
     width: 100%;
     background-color: point-background-color;
     display: flex;
-    justify-content: space-around;
-    padding: base-padding;
+    justify-content: space-between;
+    padding: 30px 40px ;
 }
 
 .home_left_container {
-    width: 60%;
     margin: base-padding;
+    flex-grow: 1;
 }
 
 .home_right_container {
-    min-width: 36%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
+}
+
+@media (max-width: 1820px) {
+    .home_right_container {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 1380px) {
@@ -27,6 +32,14 @@
     }
 
     .home_left_container {
-        width: 100%;
+        flex-grow: unset;
+        max-width: 96%;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .home_left_container {
+        max-width: 94%;
     }
 }

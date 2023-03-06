@@ -239,14 +239,13 @@ const AddHistoryForm = () => {
                         </div>
                     </div>
                 </div>
-
-                <div className = {styles.addhistory_form_button}>
-                    <ThemeProvider theme={theme}>
-                        <Button variant="contained" color="primary"
-                                onClick={submitHandler} disabled={ cost === "0" || content.length === 0 }
-                        >추가</Button>
-                    </ThemeProvider>
-                </div>
+            </div>
+            <div className = {styles.addhistory_form_button}>
+                <ThemeProvider theme={theme}>
+                    <Button variant="contained" color="primary"
+                            onClick={submitHandler} disabled={ cost === "0" || content.length === 0 }
+                    >추가</Button>
+                </ThemeProvider>
             </div>
         </div>
     )

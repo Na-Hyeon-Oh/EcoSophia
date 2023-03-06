@@ -7,6 +7,7 @@
 @value base-padding from '../../../../assets/styles/design.css';
 
 .addhistory_container {
+    font-family: base-fonts;
     margin: base-padding;
 }
 
@@ -15,7 +16,6 @@
     width: 160px;
     height: 30px;
     margin-bottom: 25px;
-    font-family: base-fonts;
     color: black;
     font-size: 20px;
     font-weight: bold;
@@ -25,15 +25,9 @@
 }
 
 .addhistory {
-    font-family: base-fonts;
     background-color: white;
     padding: base-padding;
     box-shadow: box-shadow;
-}
-
-.addhistory_form {
-    display: flex;
-    justify-content: space-between;
 }
 
 .addhistory_form_section {
@@ -41,7 +35,8 @@
     align-items: start;
     min-height: 35px;
     max-height: 40%;
-    margin: 0 15px 10px 0;
+    margin: base-padding;
+
 }
 
 .addhistory_form_title {
@@ -64,7 +59,12 @@
     accent-color: black;
 }
 
+.addhistory_form_button {
+    text-align: right;
+}
+
 .addhistory_form_button Button {
+    margin: base-padding;
     color: black;
     font-weight: bold;
     font-family: base_fonts;
@@ -74,4 +74,18 @@
     color: accent-red;
     font-size: 12px;
     max-width: 150px;
+}
+
+
+@media (max-width: 1380px) {
+    .addhistory_form {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 800px) {
+    .addhistory_form {
+        display: block;
+    }
 }

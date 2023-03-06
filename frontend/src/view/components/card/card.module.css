@@ -1,0 +1,41 @@
+@value accent-red from '../../../assets/styles/colors.css';
+@value accent-blue from '../../../assets/styles/colors.css';
+@value base-fonts from '../../../assets/styles/fonts.css';
+@value base-padding from '../../../assets/styles/design.css';
+
+.card {
+    margin: 10px 15px;
+    padding: base-padding;
+    font-family: base-fonts;
+    font-weight: normal;
+    border-right: 5px solid accent-blue;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.card_small_text {
+    display: flex;
+    justify-content: space-around;
+    font-size: medium;
+}
+
+.card_main_text {
+    display: flex;
+    font-weight: bold;
+    justify-content: space-between;
+}
+
+.card_small_text div, .card_main_text div {
+    padding: 5px;
+}
+
+.left_text {
+    text-align: left;
+}
+
+.right_text {
+    text-align: right;
+}
+
+.card_tags {
+    margin-top: 5px;
+}
