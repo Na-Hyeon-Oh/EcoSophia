@@ -1,11 +1,19 @@
 import React from 'react';
-
-import Layout from "../../components/Layout"
+import { useNavigate } from 'react-router-dom';
+import CardLayout from '../../components/cardLayout/CardLayout';
+import SignInUpForm from '../../components/signInUpForm/SignInUpForm';
 
 const SignInPage = () => {
+    const navigate = useNavigate();
+
+    const signInHandler = () => {
+        navigate('../home');
+    }
+
     return (
-        <Layout>
-        </Layout>
+        <CardLayout>
+            <SignInUpForm type="Sign In" onSubmit={signInHandler}/>
+        </CardLayout>
     )
 }
 

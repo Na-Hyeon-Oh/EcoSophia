@@ -1,0 +1,31 @@
+@value base-padding from '../../../assets/styles/design.css';
+@value base-fonts from '../../../assets/styles/fonts.css';
+@value accent-red from '../../../assets/styles/colors.css';
+
+.container {
+}
+
+.form_section {
+    display: flex;
+    align-items: start;
+    min-height: 35px;
+    max-height: 40%;
+    margin: base-padding;
+    font-family: base-fonts;
+}
+
+.form_title {
+    margin-right: base-padding;
+    min-width: 50px;
+}
+
+.form_error {
+    color: accent-red;
+    font-size: 12px;
+    max-width: 150px;
+}
+
+.form_button {
+    text-align: right;
+    padding: base-padding;
+}

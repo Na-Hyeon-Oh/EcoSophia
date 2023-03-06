@@ -1,0 +1,24 @@
+@value base-padding from '../../../assets/styles/design.css';
+@value point-background-color from '../../../assets/styles/colors.css';
+
+.card_layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: base-padding;
+    padding: base-padding 40px;
+}
+
+.card_container {
+    width: 400px;
+    background-color: point-background-color;
+    margin: base-padding;
+    padding: base-padding;
+    border-radius: base-padding;
+}
+
+@media (max-width: 850px) {
+    .card_layout {
+        flex-direction: column;
+    }
+}
