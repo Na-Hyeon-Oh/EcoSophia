@@ -7,7 +7,7 @@ const SignInPage = () => {
     const navigate = useNavigate();
 
     const signInHandler = () => {
-        navigate('../home');
+        window.location.href = "/home";
     }
 
     return (

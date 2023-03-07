@@ -7,7 +7,7 @@ const SignUpPage = () => {
     const navigate = useNavigate();
 
     const signUpHandler = () => {
-        navigate('../home');
+        window.location.href = "/home";
     }
 
     return (
