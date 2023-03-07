@@ -10,6 +10,7 @@ import {
 import HomePage from './view/pages/home/HomePage';
 import SignInPage from './view/pages/signIn/SignInPage';
 import SignUpPage from './view/pages/signUp/SignUpPage';
+import UserMethodPage from './view/pages/user/method/UserMethodPage';
 
 function App() {
     const pagesURL = [
@@ -17,7 +18,7 @@ function App() {
         '/sign-in',
         '/sign-up',
         '/user',
-        '/user/card',
+        '/user/method',
     ];
 
     return (
@@ -43,6 +44,11 @@ function App() {
                         {/*<Route path=":id" element={<InternshipDetailPage info={info} />} />*/}
                         <Route path="*" element={<div>Not Found</div>} />
                     </Route>
+
+                    <Route
+                        path="user/method"
+                        element={<UserMethodPage />}
+                    />
                 </Routes>
             </Router>
         </>

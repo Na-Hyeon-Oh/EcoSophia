@@ -10,7 +10,6 @@ import Tag from '../../../../model/Tag';
 import { tagList } from '../../../../assets/tagList/tagList';
 import { Method } from '../../../../model/Method';
 import { MethodType } from '../../../../assets/enums/MethodType';
-
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../../../assets/styles/muiTheme';
 import styles from './addHistory.module.css';
@@ -78,10 +77,6 @@ const AddHistoryForm = () => {
     const methodChangeHandler = (method: Method) => {
         setMethod(method);
     };
-
-    const methodAddButtonClickHandler = () => {
-        // 카드 등록
-    }
 
     const costChangeHandler = (event: any) => {
         let isNotNumber: boolean = /^[^1-9][^0-9]$/g.test(NumberUtils(event.target.value).deleteComma())
@@ -160,11 +155,6 @@ const AddHistoryForm = () => {
                         <div className = {styles.addhistory_form_title}>결제<br></br>수단</div>
                         <div>
                             <ReactDropDownList key={key} data={methodList} value={method} onChange={methodChangeHandler} />
-                        </div>
-                        <div>
-                            <Button onClick={methodAddButtonClickHandler}
-                                    style={{color: "black", fontSize: "1em"}}
-                            >+</Button>
                         </div>
                     </div>
                     <div className = {styles.addhistory_form_section}>
