@@ -69,8 +69,8 @@ const RenderCells = (selectedDT: Date) => {
                 수익/지출 내역이 존재하지 않습니다.
             </div>
             <div className ={style.cells_container}>
-                <div>{incomeCards}</div>
-                <div>{expenseCards}</div>
+                <div className={style.cells_column}>{incomeCards}</div>
+                <div className={style.cells_column}>{expenseCards}</div>
             </div>
         </div>
 

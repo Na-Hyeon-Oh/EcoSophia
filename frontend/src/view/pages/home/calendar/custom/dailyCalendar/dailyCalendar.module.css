@@ -13,8 +13,8 @@
     text-align: center;
 }
 
-.cells_container div {
-    flex-grow: 1;
+.cells_column {
+    width: 50%;
 }
 
 @media (max-width: 800px) {

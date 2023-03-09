@@ -14,11 +14,12 @@
 
 .card_small_text {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: medium;
 }
 
 .card_main_text {
+    width: 100%;
     display: flex;
     font-weight: bold;
     justify-content: space-between;
@@ -38,4 +39,5 @@
 
 .card_tags {
     margin-top: 5px;
+    text-align: start;
 }
