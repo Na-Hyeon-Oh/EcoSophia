@@ -63,9 +63,15 @@ const RenderCells = (selectedDT: Date) => {
     }
 
     return (
-        <div className ={style.cells_container}>
-            <div>{incomeCards}</div>
-            <div>{expenseCards}</div>
+        <div>
+            <div className={style.message_container}
+                style={{display: incomeCards.length === 0 && expenseCards.length === 0 ? "block": "none"}}>
+                수익/지출 내역이 존재하지 않습니다.
+            </div>
+            <div className ={style.cells_container}>
+                <div>{incomeCards}</div>
+                <div>{expenseCards}</div>
+            </div>
         </div>
 
     );
