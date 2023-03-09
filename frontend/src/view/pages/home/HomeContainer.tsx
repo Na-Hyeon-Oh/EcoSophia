@@ -40,19 +40,24 @@ const HomeContainer = () => {
         },
     ]);
     const [calendarOption, setCalendarOption] = useState(CalendarType.MONTHLY);
+    const [searchDate, setSearchDate] = useState(new Date());
 
     const onClickCalendarOption = (option : CalendarType) : void => {
         setCalendarOption(option);
     };
 
+    const onChangeSearchDate = (date: Date) => {
+        setSearchDate(date);
+    }
+
     return (
         <div className = {styles.home_container}>
             <div className = {styles.home_left_container}>
                 <OptionContainer methodList={methodList} filter={filter} onChangeFilter={setFilter} calendarOption={calendarOption} onClickCalendarOption={onClickCalendarOption}/>
-                <CalendarContainer option={calendarOption}/>
+                <CalendarContainer option={calendarOption} onChangeSearchDate={onChangeSearchDate}/>
             </div>
             <div className = {styles.home_right_container}>
-                <ReportContainer option={calendarOption}/>
+                <ReportContainer calendarOption={calendarOption} searchDate={searchDate}/>
                 <AddHistoryContainer/>
             </div>
         </div>
