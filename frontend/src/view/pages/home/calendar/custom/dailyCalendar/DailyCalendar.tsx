@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import { CalendarProps } from '../CalendarProps.';
 import { Icon } from '@iconify/react';
-import { format, addDays, subDays } from 'date-fns';
+import { format, addDays, subDays, isSameDay } from 'date-fns';
 import Card from '../../../../../components/card/Card';
 import NumberUtils from '../../../../../../assets/utils/NumberUtils';
-import DateUtils from '../../../../../../assets/utils/DateUtils';
 
 import {testData} from '../../../../../../assets/testData';
 
 import styles from '../calendar.module.css';
 import style from './dailyCalendar.module.css';
 
-const CustomDailyCalender = ({ todayDT, setTodayDT, selectedDate, setSelectedDate }: CalendarProps) => {
+const CustomDailyCalender = ({ todayDT, setTodayDT, selectedDate, setSelectedDate, onChangeSearchDate }: CalendarProps) => {
     const prevDay = () : void => {
         setSelectedDate(subDays(selectedDate, 1));
     };
     const nextDay = () : void => {
         setSelectedDate(addDays(selectedDate, 1));
     };
+
+    onChangeSearchDate(selectedDate);
 
     return (
         <div className={styles.custom_calender}>
@@ -47,7 +48,7 @@ const RenderCells = (selectedDT: Date) => {
     let incomeCards = [];
     let expenseCards = [];
     for (let i = 0; i < testData.length; i++) {
-        if (DateUtils(testData[i].date, selectedDT).isSameDate()) {
+        if (isSameDay(testData[i].date, selectedDT)) {
             let date: string = format(testData[i].date, "yyyy-MM-dd eee");
             let price: string = NumberUtils(testData[i].price.toString()).addComma();
             if(testData[i].price > 0)

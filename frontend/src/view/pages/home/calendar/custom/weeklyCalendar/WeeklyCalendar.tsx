@@ -3,15 +3,14 @@ import { CalendarProps } from '../CalendarProps.';
 import { Icon } from '@iconify/react';
 import { format, addWeeks, subWeeks } from 'date-fns';
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
-import { differenceInCalendarDays, isSameMonth, isSameDay, addDays, getISOWeek } from 'date-fns';
+import { differenceInCalendarDays, isSameMonth, isSameDay, addDays } from 'date-fns';
 import NumberUtils from '../../../../../../assets/utils/NumberUtils';
-import DateUtils from '../../../../../../assets/utils/DateUtils';
 
 import {testData} from '../../../../../../assets/testData';
 
 import styles from '../calendar.module.css'
 
-const CustomWeeklyCalender = ({ todayDT, setTodayDT, currentDT, setCurrentDT, selectedDate, setSelectedDate }: CalendarProps) => {
+const CustomWeeklyCalender = ({ todayDT, setTodayDT, currentDT, setCurrentDT, selectedDate, setSelectedDate, onChangeSearchDate }: CalendarProps) => {
     const prevWeek = () : void => {
         setCurrentDT(subWeeks(currentDT, 1));
     };
@@ -22,6 +21,8 @@ const CustomWeeklyCalender = ({ todayDT, setTodayDT, currentDT, setCurrentDT, se
     const onDateClick = (day : Date) : void => {
         setSelectedDate(day);
     };
+
+    onChangeSearchDate(currentDT);
 
     return (
         <div className={styles.custom_calender}>
@@ -77,7 +78,7 @@ const RenderCells = ( todayDT: Date, currentDT : Date, selectedDate : Date, onDa
         let incomeSum: number = 0;
         let expenseSum: number = 0;
         for (let i = 0; i < testData.length; i++) {
-            if (DateUtils(cloneDay, testData[i].date).isSameDate()) {
+            if (isSameDay(cloneDay, testData[i].date)) {
                 if (testData[i].price > 0) incomeSum += testData[i].price;
                 else expenseSum += testData[i].price;
             }
@@ -90,7 +91,7 @@ const RenderCells = ( todayDT: Date, currentDT : Date, selectedDate : Date, onDa
                     + ` ${differenceInCalendarDays(day, todayDT) === 0 ? styles.today : ''}`
                     + ` ${!isSameMonth(day, monthStart) ? ''
                         : isSameDay(day, selectedDate) ? styles.selected
-                            : !DateUtils(currentDT, day).isSameMonth() ? styles.invalid : ''}`}
+                            : !isSameMonth(currentDT, day) ? styles.invalid : ''}`}
                 key = {day.toString()}
                 onClick = {() => onDateClick(cloneDay)}
             >
@@ -98,7 +99,7 @@ const RenderCells = ( todayDT: Date, currentDT : Date, selectedDate : Date, onDa
                         <span className = {format(currentDT, 'M') !== format(day, 'M') ? styles.invalid : ''}>
                             {formattedDate}
                         </span>
-                    <div className={DateUtils(currentDT, day).isSameMonth() ? styles.histories : styles.invalid_histories} >
+                    <div className={isSameMonth(currentDT, day) ? styles.histories : styles.invalid_histories} >
                         <div className={incomeSum > 0 ? styles.history_income : styles.invalid_history}>+{income}</div>
                         <div className={expenseSum < 0 ? styles.history_expense : styles.invalid_history}>{expense}</div>
                     </div>

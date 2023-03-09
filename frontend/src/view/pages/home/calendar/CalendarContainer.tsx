@@ -7,7 +7,7 @@ import { CalendarType } from '../../../../assets/enums/CalendarType';
 
 import styles from './calendar.module.css';
 
-const CalendarContainer = ({ option } : CalendarContainerProps) => {
+const CalendarContainer = ({ option, onChangeSearchDate } : CalendarContainerProps) => {
     const [todayDT, setTodayDT] = useState(new Date());
     const [currentDT, setCurrentDT] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -15,11 +15,26 @@ const CalendarContainer = ({ option } : CalendarContainerProps) => {
     const calendarType = () => {
         switch(option) {
             case CalendarType.MONTHLY:
-                return <CustomCalendar todayDT={todayDT} setTodayDT={setTodayDT} currentDT={currentDT} setCurrentDT={setCurrentDT} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>;
+                return <CustomCalendar
+                    todayDT={todayDT} setTodayDT={setTodayDT}
+                    currentDT={currentDT} setCurrentDT={setCurrentDT}
+                    selectedDate={selectedDate} setSelectedDate={setSelectedDate}
+                    onChangeSearchDate={onChangeSearchDate}
+                />;
             case CalendarType.WEEKLY:
-                return <CustomWeeklyCalendar todayDT={todayDT} setTodayDT={setTodayDT} currentDT={currentDT} setCurrentDT={setCurrentDT} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
+                return <CustomWeeklyCalendar
+                    todayDT={todayDT} setTodayDT={setTodayDT}
+                    currentDT={currentDT} setCurrentDT={setCurrentDT}
+                    selectedDate={selectedDate} setSelectedDate={setSelectedDate}
+                    onChangeSearchDate={onChangeSearchDate}
+                />
             case CalendarType.DAILY:
-                return <CustomDailyCalendar todayDT={todayDT} setTodayDT={setTodayDT} currentDT={currentDT} setCurrentDT={setCurrentDT} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
+                return <CustomDailyCalendar
+                    todayDT={todayDT} setTodayDT={setTodayDT}
+                    currentDT={currentDT} setCurrentDT={setCurrentDT}
+                    selectedDate={selectedDate} setSelectedDate={setSelectedDate}
+                    onChangeSearchDate={onChangeSearchDate}
+                />
             default:
                 return null;
         }
@@ -44,6 +59,7 @@ const CalendarTopDesign = () => {
 
 interface CalendarContainerProps {
     option: CalendarType;
+    onChangeSearchDate: (date: Date) => void;
 }
 
 export default CalendarContainer

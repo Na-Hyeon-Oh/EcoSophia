@@ -58,17 +58,6 @@
     accent-color: black;
 }
 
-.addhistory_form_button {
-    text-align: right;
-}
-
-.addhistory_form_button Button {
-    margin: base-padding;
-    color: black;
-    font-weight: bold;
-    font-family: base_fonts;
-}
-
 .addhistory_form_error {
     color: accent-red;
     font-size: 12px;

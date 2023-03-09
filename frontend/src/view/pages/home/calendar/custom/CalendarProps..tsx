@@ -5,4 +5,5 @@ export interface CalendarProps {
     setCurrentDT: (currentDT: Date) => void,
     selectedDate: Date,
     setSelectedDate: (selectedDate: Date) => void,
+    onChangeSearchDate: (date: Date) => void,
 }

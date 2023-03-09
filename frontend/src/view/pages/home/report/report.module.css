@@ -9,6 +9,7 @@
 
 .report_container {
     margin: base-padding;
+    min-width: 300px;
 }
 
 .report_title_container {
