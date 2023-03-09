@@ -1,0 +1,30 @@
+@value point-background-color from '../../../../assets/styles/colors.css';
+@value point-gray from '../../../../assets/styles/colors.css';
+@value base-fonts from '../../../../assets/styles/fonts.css';
+@value base-padding from '../../../../assets/styles/design.css';
+
+.user_method_container {
+    width: 100%;
+    background-color: point-background-color;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 40px;
+}
+
+.user_method_list_container, .user_method_add_form_container {
+    margin: base-padding;
+}
+
+.user_method_list_title_container {
+    background-color: point-gray;
+    width: 160px;
+    height: 30px;
+    margin-bottom: 25px;
+    font-family: base-fonts;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

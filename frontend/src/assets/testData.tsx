@@ -1,3 +1,5 @@
+import { MethodType } from '../assets/enums/MethodType';
+
 export const testData = [
     {
         date: new Date("2023-02-14"),
@@ -32,3 +34,18 @@ export const testData = [
         ]
     },
 ]
+
+export const methodList = [
+    {
+        id: 0,
+        userId: 1,
+        type: MethodType.Cash,
+        name: "현금"
+    },
+    {
+        id: 1,
+        userId: 1,
+        type: MethodType.Card,
+        name: "우리은행/우리SumCheck카드"
+    },
+];

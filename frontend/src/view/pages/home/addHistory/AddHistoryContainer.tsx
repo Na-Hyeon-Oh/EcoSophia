@@ -11,6 +11,8 @@ import { tagList } from '../../../../assets/tagList/tagList';
 import { Method } from '../../../../model/Method';
 import { MethodType } from '../../../../assets/enums/MethodType';
 import { ThemeProvider } from '@mui/material/styles';
+import { methodList } from '../../../../assets/testData';
+
 import theme from '../../../../assets/styles/muiTheme';
 import styles from './addHistory.module.css';
 
@@ -33,20 +35,6 @@ const Title = () => {
 
 const AddHistoryForm = () => {
     //const [ { userId }, { addHistory }, { nextHistoryId }, { methodList } ] = useContext(I)
-    const methodList : Array<Method> = [
-        {
-            id: 0,
-            userId: 1,
-            type: MethodType.Cash,
-            name: "현금"
-        },
-        {
-            id: 1,
-            userId: 1,
-            type: MethodType.Card,
-            name: "우리은행/우리SumCheck카드"
-        },
-    ];
 
     const [date, setDate] = useState<Date | null | undefined>(new Date());
     const [method, setMethod] = useState<Method>({
@@ -153,7 +141,7 @@ const AddHistoryForm = () => {
                 <div>
                     <div className = {styles.addhistory_form_section}>
                         <div className = {styles.addhistory_form_title}>결제<br></br>수단</div>
-                        <div>
+                        <div className = {styles.addhistory_form_content}>
                             <ReactDropDownList key={key} data={methodList} value={method} onChange={methodChangeHandler} />
                         </div>
                     </div>
