@@ -4,7 +4,7 @@ import UserMethodContainer from './UserMethodContainer';
 
 const UserMethodPage = () => {
     return (
-        <Layout>
+        <Layout option={1}>
             <UserMethodContainer/>
         </Layout>
     )

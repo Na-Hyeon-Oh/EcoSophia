@@ -4,7 +4,6 @@
 @value base-padding from '../../../assets/styles/design.css';
 
 .card {
-    margin: 10px 15px;
     padding: 10px;
     font-family: base-fonts;
     font-weight: normal;

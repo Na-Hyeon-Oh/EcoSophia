@@ -5,28 +5,44 @@ import profile_img from '../../../assets/images/profile.png'
 import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+import AddIcon from '@mui/icons-material/Add';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
 import styles from './header.module.css'
 
-const Header = () => {
+const Header = ({option}: HeaderProps) => {
     return (
         <div className = {styles.header}>
             <Logo />
-            <Navigator/>
+            <Navigator option={option}/>
         </div>
     )
 }
 
-const Navigator = () => {
+const Navigator = ({option}: HeaderProps) => {
     const methodAddButtonClickHandler = () => {
         window.location.href = "/user/method"
+    }
+
+    const toHomeButtonClickHandler = () => {
+        window.location.href = "/home"
     }
     return (
         <div className = {styles.navigator}>
             <div className = {styles.method_add_button_container}>
-                <Button onClick={methodAddButtonClickHandler}
-                        style={{color: "black", fontSize: "2em"}}>
-                    <div>결제수단</div> +
-                </Button>
+                {
+                    option == 0 
+                        ? <Button onClick={methodAddButtonClickHandler}
+                                  style={{color: "black", fontSize: "2em"}}>
+                            <div>결제수단</div>
+                            <AddIcon/>
+                        </Button>
+                        : <Button onClick={toHomeButtonClickHandler}
+                                style={{color: "black", fontSize: "2em"}}>
+                            <div>Home</div>
+                            <ArrowForwardIosIcon/>
+                        </Button>
+                }
             </div>
             <Profile/>
         </div>
@@ -71,6 +87,10 @@ const Profile = () => {
             </Menu>
         </div>
     )
+}
+
+interface HeaderProps {
+    option: number;
 }
 
 export default Header

@@ -12,7 +12,7 @@ const UserMethodContainer = ({}: UserMethodContainerProps) => {
                 </div>
                 <UserMethodList></UserMethodList>
             </div>
-            <div className={styles.user_method_add_form_container}>
+            <div className={styles.user_add_method_form_container}>
                 <AddMethodForm></AddMethodForm>
             </div>
         </div>

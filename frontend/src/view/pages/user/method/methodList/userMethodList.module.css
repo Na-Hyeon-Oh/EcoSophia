@@ -1,0 +1,25 @@
+@value base-padding from '../../../../../assets/styles/design.css';
+@value base-fonts from '../../../../../assets/styles/fonts.css';
+
+.user_method_list_container {
+    display: flex;
+}
+
+.user_method_card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: base-fonts;
+    margin: 0 base-padding base-padding 0;
+    padding: base-padding;
+}
+
+@media (max-width: 800px) {
+    .user_method_list_container {
+        display: block;
+    }
+
+    .user_method_card {
+        margin: 0 0 base-padding 0;
+    }
+}

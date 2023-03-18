@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CalendarProps } from '../CalendarProps.';
 import { Icon } from '@iconify/react';
 import { format, addDays, subDays, isSameDay } from 'date-fns';
-import Card from '../../../../../components/card/Card';
+import AccordionCard from '../../../../../components/accordionCard/AccordionCard';
 import NumberUtils from '../../../../../../assets/utils/NumberUtils';
 
 import {testData} from '../../../../../../assets/testData';
@@ -53,11 +53,15 @@ const RenderCells = (selectedDT: Date) => {
             let price: string = NumberUtils(testData[i].price.toString()).addComma();
             if(testData[i].price > 0)
                 incomeCards.push(
-                    <Card smallLeftText={date} smallRightText={testData[i].by} leftText={testData[i].contents} rightText={price} tags={testData[i].tags} color={"#FF0000"}/>
+                    <div className={style.card}>
+                        <AccordionCard smallLeftText={date} smallRightText={testData[i].by} leftText={testData[i].contents} rightText={price} tags={testData[i].tags} color={"#FF0000"}/>
+                    </div>
                 );
             else
                 expenseCards.push(
-                    <Card smallLeftText={date} smallRightText={testData[i].by} leftText={testData[i].contents} rightText={price} tags={testData[i].tags} color={"#0018FF"}/>
+                    <div className={style.card}>
+                        <AccordionCard smallLeftText={date} smallRightText={testData[i].by} leftText={testData[i].contents} rightText={price} tags={testData[i].tags} color={"#0018FF"}/>
+                    </div>
                 );
         }
     }

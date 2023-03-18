@@ -6,12 +6,10 @@
 .user_method_container {
     width: 100%;
     background-color: point-background-color;
-    display: flex;
-    justify-content: space-between;
     padding: 30px 40px;
 }
 
-.user_method_list_container, .user_method_add_form_container {
+.user_method_list_container, .user_add_method_form_container {
     margin: base-padding;
 }
 

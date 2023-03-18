@@ -11,7 +11,7 @@ import styles from './addMethod.module.css';
 
 const AddMethodForm = ({}) => {
     const [name, setName] = useState("");
-    const [methodType, setMethodType] = useState<MethodType>(MethodType.Cash);
+    const [methodType, setMethodType] = useState<MethodType>(MethodType.Card);
     const [key, setKey] = useState(0);
 
     const methodTypeChangeHandler = (methodType: MethodType) => {
@@ -59,7 +59,7 @@ const AddMethodForm = ({}) => {
                         id="standard-multiline-flexible" variant="standard" multiline fullWidth
                         value={name}
                         onChange={nameChangeHandler}
-                        style={{minWidth: 400}}
+                        style={{minWidth: 350}}
                     ></TextField>
                     <div className={styles.addmethod_form_error}
                          style={{display: name.length === 0 ? "block" : "none"}}>
