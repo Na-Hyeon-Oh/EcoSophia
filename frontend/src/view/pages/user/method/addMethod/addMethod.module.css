@@ -1,0 +1,35 @@
+@value white from '../../../../../assets/styles/colors.css';
+@value accent-red from '../../../../../assets/styles/colors.css';
+@value base-fonts from '../../../../../assets/styles/fonts.css';
+@value base-padding from '../../../../../assets/styles/design.css';
+@value box-shadow from '../../../../../assets/styles/design.css';
+
+.addmethod_form {
+    background-color: white;
+    font-family: base-fonts;
+    padding: base-padding;
+    box-shadow: box-shadow;
+}
+
+.addmethod_form_section {
+    display: flex;
+    align-items: start;
+    min-height: 35px;
+    max-height: 40%;
+    margin: base-padding;
+}
+
+.addmethod_form_title {
+    margin-right: base-padding;
+    min-width: 30px;
+}
+
+.addmethod_form_error {
+    color: accent-red;
+    font-size: 12px;
+    max-width: 300px;
+}
+
+.addmethod_form_button {
+    text-align: right;
+}

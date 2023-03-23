@@ -15,6 +15,7 @@
 
 .navigator {
     display: flex;
+    align-items: center;
 }
 
 .profile_container {

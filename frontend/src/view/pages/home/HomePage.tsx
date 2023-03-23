@@ -5,7 +5,7 @@ import HomeContainer from "./HomeContainer"
 
 const HomePage = () => {
     return (
-        <Layout>
+        <Layout option={0}>
             <HomeContainer/>
         </Layout>
     )

@@ -64,6 +64,10 @@
     max-width: 150px;
 }
 
+.addhistory_form_button {
+    text-align: right;
+}
+
 
 @media (max-width: 1380px) {
     .addhistory_form {
