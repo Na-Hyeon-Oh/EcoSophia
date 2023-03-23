@@ -3,7 +3,7 @@ import { useState, useRef } from 'react'
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import IconButton from '@mui/material/IconButton'
-import DeleteIcon from '@mui/icons-material/Delete';
+import { IoMdRemoveCircle } from 'react-icons/io';
 import { MethodType } from '../../../../../assets/enums/MethodType';
 import { methodList } from '../../../../../assets/testData'
 
@@ -37,7 +37,9 @@ const UserMethodList = ({}) => {
             <Card className={styles.user_method_card} sx={{ minWidth: 275 }}>
                 {methodList[i].name}
                 <CardActions>
-                    <IconButton><DeleteIcon/></IconButton>
+                    <IconButton>{
+                        <IoMdRemoveCircle/>
+                    }</IconButton>
                 </CardActions>
             </Card>
         );

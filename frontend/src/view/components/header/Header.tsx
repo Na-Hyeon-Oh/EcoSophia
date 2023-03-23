@@ -5,8 +5,6 @@ import profile_img from '../../../assets/images/profile.png'
 import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import AddIcon from '@mui/icons-material/Add';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import styles from './header.module.css'
 
@@ -35,12 +33,10 @@ const Navigator = ({option}: HeaderProps) => {
                         ? <Button onClick={methodAddButtonClickHandler}
                                   style={{color: "black", fontSize: "2em"}}>
                             <div>결제수단</div>
-                            <AddIcon/>
                         </Button>
                         : <Button onClick={toHomeButtonClickHandler}
                                 style={{color: "black", fontSize: "2em"}}>
                             <div>Home</div>
-                            <ArrowForwardIosIcon/>
                         </Button>
                 }
             </div>
