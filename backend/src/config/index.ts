@@ -11,5 +11,5 @@ if(envFound.error) {
 
 export default {
     port: parseInt(process.env.PORT as string, 10) as number,
-    mongoURI: process.env.MONGODB_URI as string,
+    //mongoURI: process.env.MONGODB_URI as string,
 };

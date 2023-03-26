@@ -7,5 +7,19 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <table border='1'>
+          <tr>
+            <th>id</th>
+            <th>email</th>
+            <th>pw</th>
+          </tr>
+          <% rows.forEach((row, index)=>{ %>
+            <tr>
+              <td><%=row.id%></td>
+              <td><%=row.email%></td>
+              <td><%=row.password%></td>
+            </tr>
+          <% }) %>
+        </table>
   </body>
 </html>

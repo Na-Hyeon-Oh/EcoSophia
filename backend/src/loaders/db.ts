@@ -1,17 +1,33 @@
-import mongoose from "mongoose";
-import config from "../config";
+import { User } from '../dtos/user.interface';
 
-const connectDB = async () => {
-    try {
-        await mongoose.connect(config.mongoURI);
+const mysql = require('mysql');
+const dbConfig = require('../config/db.config');
 
-        mongoose.set('autoCreate', true);
+const connectDB = mysql.createConnection({
+    host: dbConfig.HOST,
+    user: dbConfig.USER,
+    password: dbConfig.PASSWORD,
+    port: dbConfig.PORT,
+    database: dbConfig.DB
+});
 
-        console.log("Mongoose Connected...");
-    } catch (err: any) {
-        console.error(err.message);
-        process.exit(1);
-    }
+function getAllUsers(callback: (users: User[]) => void): void {
+    connectDB.query("SELECT * FROM user", (error: any, rows: any, fields: any) => {
+        if(error) {
+            console.error("Error fetching users from db: ", error);
+            callback([]);
+            return;
+        }
+        const users = rows.map((row: any) => ({
+            id: row.id,
+            email: row.email,
+            password: row.password
+        }));
+        callback(users);
+    });
 };
 
-export default connectDB;
+module.exports = {
+    getAllUsers
+}
+//export default getAllUsers;

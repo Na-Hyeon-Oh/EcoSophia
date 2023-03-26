@@ -1,11 +1,12 @@
 import express, { Request, Response, NextFunction } from "express";
 import config from "./config";
-import connectDB from "./loaders/db";
 import routes from './routes';
 import ErrorType from './dtos/errorType.interface';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+const bodyParser = require("body-parser");
+const db = require('./loaders/db');
 
 require('dotenv').config();
 
@@ -13,13 +14,15 @@ require('dotenv').config();
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
-//connectDB();
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());                // request body를 express에서 json으로 받아옴
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());                // request body를 express에서 json으로 받아옴
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('Hello Express!');
+    //res.send('Hello Express!');
+    db.getAllUsers((rows: any) => {
+        res.render('index', {title: "Hello Express!", rows:rows});
+    });
 });
 
 app.use('/api', routes);      // '/api' 엔드포인트에 요청이 들어오면 api 폴더로 분기
