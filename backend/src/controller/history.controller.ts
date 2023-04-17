@@ -1,20 +1,14 @@
 import { Request, Response } from 'express';
-import { User, Method, History } from '../entity';
-import {HistoryInput, HistoryUpdateInput} from "../dto";
+import { User } from '../entity/user.entity';
+import { History } from "../entity/history.entity";
+import { Method } from '../entity/method.entity';
+import { HistoryInput, HistoryUpdateInput } from "../dto";
 import dataSource from "../loader/db";
-
-declare global {
-    namespace Express {
-        interface Request {
-            user?: User;
-        }
-    }
-}
 
 export async function createHistory(req: Request, res: Response): Promise<any> {
     try {
         const {date, methodId, content, cost, tags}: HistoryInput = req.body;
-        const userId = req.user?.id;     // 로그인한 사용자의 ID
+        const userId = parseInt(req.params.userId);     // 로그인한 사용자의 ID
 
         const userRepository = dataSource.getRepository(User);
         const user = await userRepository.findOne({
@@ -57,7 +51,7 @@ export async function createHistory(req: Request, res: Response): Promise<any> {
 
 export async function getHistories(req: Request, res: Response): Promise<any> {
     try {
-        const userId = req.user?.id; // 로그인한 사용자의 ID
+        const userId = parseInt(req.params.userId); // 로그인한 사용자의 ID
 
         const historyRepository = dataSource.getRepository(History);
         const histories = await historyRepository.find({
@@ -79,9 +73,9 @@ export async function getHistories(req: Request, res: Response): Promise<any> {
 
 export async function updateHistory(req: Request, res: Response): Promise<any> {
     try {
-        const id = req.params.historyId;
+        const id = parseInt(req.params.historyId);
         const { date, methodId, content, cost, tags }: HistoryUpdateInput = req.body;
-        const userId = req.user?.id; // 로그인한 사용자의 ID
+        const userId = parseInt(req.params.userId); // 로그인한 사용자의 ID
 
         const userRepository = dataSource.getRepository(User);
         const user = await userRepository.findOne({
@@ -96,7 +90,7 @@ export async function updateHistory(req: Request, res: Response): Promise<any> {
         const historyRepository = dataSource.getRepository(History);
         const history = await historyRepository.findOne({
             where: {
-                id: parseInt(id),
+                id: id,
                 user: { id: userId },
             },
             relations: ['method'],
@@ -132,8 +126,8 @@ export async function updateHistory(req: Request, res: Response): Promise<any> {
 
 export async function deleteHistory(req: Request, res: Response): Promise<any> {
     try {
-        const id = req.params.historyId;
-        const userId = req.user?.id;
+        const id = parseInt(req.params.historyId);
+        const userId = parseInt(req.params.userId);
 
         const userRepository = dataSource.getRepository(User);
         const user = await userRepository.findOne({
@@ -148,7 +142,7 @@ export async function deleteHistory(req: Request, res: Response): Promise<any> {
         const historyRepository = dataSource.getRepository(History);
         const history = await historyRepository.findOne({
             where: {
-                id: parseInt(id),
+                id: id,
                 user: { id: userId },
             },
             relations: ['method'],

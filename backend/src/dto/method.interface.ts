@@ -1,11 +1,11 @@
 export interface MethodInput {
-    user: number;
+    userId: number;
     type: string;
     name: string;
 }
 
 export interface MethodUpdateInput {
-    user: number;
+    userId: number;
     type: string;
     name: string;
 }

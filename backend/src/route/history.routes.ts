@@ -3,9 +3,9 @@ import { createHistory, getHistories, updateHistory, deleteHistory } from '../co
 
 const router: Router = Router();
 
-router.post('/', createHistory);
-router.get('/', getHistories);
-router.put('/:historyId', updateHistory);
-router.delete('/:historyId', deleteHistory);
+router.post('/:userId', createHistory);
+router.get('/:userId', getHistories);
+router.put('/:userId/:historyId', updateHistory);
+router.delete('/:userId/:historyId', deleteHistory);
 
 export default router;

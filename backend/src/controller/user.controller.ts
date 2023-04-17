@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { User } from '../entity';
+import { User } from '../entity/user.entity';
 import { UserInput } from '../dto';
 import dataSource from "../loader/db";
 

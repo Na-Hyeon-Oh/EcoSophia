@@ -1,6 +1,8 @@
 import { DataSource } from 'typeorm';
 
-import { User, History, Method } from '../entity';
+import { User } from '../entity/user.entity';
+import { History } from "../entity/history.entity";
+import { Method } from '../entity/method.entity';
 
 const mysql = require('mysql');
 const dbConfig = require('../config/db.config');

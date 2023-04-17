@@ -8,7 +8,7 @@ export interface HistoryInput {
 }
 
 export interface HistoryUpdateInput {
-    userId?: number;
+    userId: number;
     date: Date;
     methodId: number;
     content: string;

@@ -13,12 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteUser = exports.getUser = exports.loginUser = exports.createUser = void 0;
-const index_1 = require("../entity/index");
+const entity_1 = require("../entity");
 const db_1 = __importDefault(require("../loader/db"));
 function createUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const userRepository = db_1.default.getRepository(index_1.User);
+            const userRepository = db_1.default.getRepository(entity_1.User);
             const userInput = req.body;
             const newUser = userRepository.create(userInput);
             yield userRepository.save(newUser);
@@ -34,7 +34,7 @@ exports.createUser = createUser;
 function loginUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const userRepository = db_1.default.getRepository(index_1.User);
+            const userRepository = db_1.default.getRepository(entity_1.User);
             const { email, pw } = req.body;
             const user = yield userRepository.findOne({
                 where: {
@@ -43,8 +43,7 @@ function loginUser(req, res) {
                 }
             });
             if (user) {
-                res.render('User login', { user });
-                //res.status(200).json(user);
+                res.status(200).json(user);
             }
             else {
                 res.status(401).send('Invalid email or password');
@@ -60,13 +59,16 @@ exports.loginUser = loginUser;
 function getUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const userRepository = db_1.default.getRepository(index_1.User);
-            const id = parseInt(req.params.id);
+            const userRepository = db_1.default.getRepository(entity_1.User);
+            const id = parseInt(req.params.userId);
             const user = yield userRepository.findOne({
                 where: { id: id }
             });
             if (user) {
-                res.status(200).json(user);
+                res.status(200).json({
+                    id: id,
+                    email: user.email,
+                });
             }
             else {
                 res.status(404).send('User NOT FOUND');
@@ -82,14 +84,17 @@ exports.getUser = getUser;
 function deleteUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const userRepository = db_1.default.getRepository(index_1.User);
-            const id = parseInt(req.params.id);
+            const userRepository = db_1.default.getRepository(entity_1.User);
+            const id = parseInt(req.params.userId);
             const user = yield userRepository.findOne({
                 where: { id: id }
             });
             if (user) {
                 yield userRepository.remove(user);
-                res.status(200).json(user);
+                res.status(200).json({
+                    id: id,
+                    email: user.email,
+                });
             }
             else {
                 res.status(404).send('User NOT FOUND');

@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteHistory = exports.updateHistory = exports.getHistories = exports.createHistory = void 0;
-const index_1 = require("../entity/index");
+const entity_1 = require("../entity");
 const db_1 = __importDefault(require("../loader/db"));
 function createHistory(req, res) {
     var _a;
@@ -21,7 +21,7 @@ function createHistory(req, res) {
         try {
             const { date, methodId, content, cost, tags } = req.body;
             const userId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.id; // 로그인한 사용자의 ID
-            const userRepository = db_1.default.getRepository(index_1.User);
+            const userRepository = db_1.default.getRepository(entity_1.User);
             const user = yield userRepository.findOne({
                 where: {
                     id: userId
@@ -30,7 +30,7 @@ function createHistory(req, res) {
             if (!user) {
                 return res.status(404).send('User NOT FOUND');
             }
-            const methodRepository = db_1.default.getRepository(index_1.Method);
+            const methodRepository = db_1.default.getRepository(entity_1.Method);
             const method = yield methodRepository.findOne({
                 where: {
                     id: methodId,
@@ -40,7 +40,7 @@ function createHistory(req, res) {
             if (!method) {
                 return res.status(404).send('Method NOT FOUND');
             }
-            const historyRepository = db_1.default.getRepository(index_1.History);
+            const historyRepository = db_1.default.getRepository(entity_1.History);
             const history = yield historyRepository.create({
                 user,
                 date,
@@ -50,11 +50,11 @@ function createHistory(req, res) {
                 tags
             });
             yield historyRepository.save(history);
-            return res.status(200).json(history);
+            res.status(200).json(history);
         }
         catch (error) {
             console.error(error);
-            return res.status(500).send('Server error');
+            res.status(500).send('Server error');
         }
     });
 }
@@ -64,7 +64,7 @@ function getHistories(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const userId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.id; // 로그인한 사용자의 ID
-            const historyRepository = db_1.default.getRepository(index_1.History);
+            const historyRepository = db_1.default.getRepository(entity_1.History);
             const histories = yield historyRepository.find({
                 where: {
                     user: { id: userId }
@@ -74,11 +74,11 @@ function getHistories(req, res) {
                     date: 'DESC'
                 }
             });
-            return res.status(200).json(histories);
+            res.status(200).json(histories);
         }
         catch (error) {
             console.error(error);
-            return res.status(500).send('Server error');
+            res.status(500).send('Server error');
         }
     });
 }
@@ -87,10 +87,10 @@ function updateHistory(req, res) {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { id } = req.params;
+            const id = req.params.historyId;
             const { date, methodId, content, cost, tags } = req.body;
             const userId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.id; // 로그인한 사용자의 ID
-            const userRepository = db_1.default.getRepository(index_1.User);
+            const userRepository = db_1.default.getRepository(entity_1.User);
             const user = yield userRepository.findOne({
                 where: {
                     id: userId
@@ -99,7 +99,7 @@ function updateHistory(req, res) {
             if (!user) {
                 return res.status(404).send('User NOT FOUND');
             }
-            const historyRepository = db_1.default.getRepository(index_1.History);
+            const historyRepository = db_1.default.getRepository(entity_1.History);
             const history = yield historyRepository.findOne({
                 where: {
                     id: parseInt(id),
@@ -110,7 +110,7 @@ function updateHistory(req, res) {
             if (!history) {
                 return res.status(404).send('History NOT FOUND');
             }
-            const methodRepository = db_1.default.getRepository(index_1.Method);
+            const methodRepository = db_1.default.getRepository(entity_1.Method);
             const method = yield methodRepository.findOne({
                 where: {
                     id: methodId,
@@ -126,11 +126,11 @@ function updateHistory(req, res) {
             history.cost = cost;
             history.tags = tags;
             yield historyRepository.save(history);
-            return res.status(200).json(history);
+            res.status(200).json(history);
         }
         catch (error) {
             console.error(error);
-            return res.status(500).send('Server error');
+            res.status(500).send('Server error');
         }
     });
 }
@@ -139,9 +139,9 @@ function deleteHistory(req, res) {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { id } = req.params;
+            const id = req.params.historyId;
             const userId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.id;
-            const userRepository = db_1.default.getRepository(index_1.User);
+            const userRepository = db_1.default.getRepository(entity_1.User);
             const user = yield userRepository.findOne({
                 where: {
                     id: userId
@@ -150,7 +150,7 @@ function deleteHistory(req, res) {
             if (!user) {
                 return res.status(404).send('User NOT FOUND');
             }
-            const historyRepository = db_1.default.getRepository(index_1.History);
+            const historyRepository = db_1.default.getRepository(entity_1.History);
             const history = yield historyRepository.findOne({
                 where: {
                     id: parseInt(id),
@@ -162,11 +162,11 @@ function deleteHistory(req, res) {
                 return res.status(404).send('History NOT FOUND');
             }
             yield historyRepository.remove(history);
-            return res.status(200).json({ message: 'History deleted' });
+            res.status(200).json({ message: 'History deleted' });
         }
         catch (error) {
             console.error(error);
-            return res.status(500).send('Server error');
+            res.status(500).send('Server error');
         }
     });
 }
