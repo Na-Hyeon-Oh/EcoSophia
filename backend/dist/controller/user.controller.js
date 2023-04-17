@@ -13,12 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteUser = exports.getUser = exports.loginUser = exports.createUser = void 0;
-const entity_1 = require("../entity");
+const user_entity_1 = require("../entity/user.entity");
 const db_1 = __importDefault(require("../loader/db"));
 function createUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const userRepository = db_1.default.getRepository(entity_1.User);
+            const userRepository = db_1.default.getRepository(user_entity_1.User);
             const userInput = req.body;
             const newUser = userRepository.create(userInput);
             yield userRepository.save(newUser);
@@ -34,7 +34,7 @@ exports.createUser = createUser;
 function loginUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const userRepository = db_1.default.getRepository(entity_1.User);
+            const userRepository = db_1.default.getRepository(user_entity_1.User);
             const { email, pw } = req.body;
             const user = yield userRepository.findOne({
                 where: {
@@ -59,7 +59,7 @@ exports.loginUser = loginUser;
 function getUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const userRepository = db_1.default.getRepository(entity_1.User);
+            const userRepository = db_1.default.getRepository(user_entity_1.User);
             const id = parseInt(req.params.userId);
             const user = yield userRepository.findOne({
                 where: { id: id }
@@ -84,7 +84,7 @@ exports.getUser = getUser;
 function deleteUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const userRepository = db_1.default.getRepository(entity_1.User);
+            const userRepository = db_1.default.getRepository(user_entity_1.User);
             const id = parseInt(req.params.userId);
             const user = yield userRepository.findOne({
                 where: { id: id }

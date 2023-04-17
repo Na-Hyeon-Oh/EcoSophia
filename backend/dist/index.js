@@ -7,7 +7,6 @@ const express_1 = __importDefault(require("express"));
 const config_1 = __importDefault(require("./config"));
 const route_1 = __importDefault(require("./route"));
 const db_1 = __importDefault(require("./loader/db"));
-const auth_middleware_1 = __importDefault(require("./middleware/auth.middleware"));
 // Establish db connection
 db_1.default
     .initialize()
@@ -30,7 +29,6 @@ app.use(bodyParser.json()); // request body를 express에서 json으로 받아�
 app.get('/', (req, res) => {
     res.send('Hello Express!');
 });
-app.use((0, auth_middleware_1.default)());
 app.use('/api', route_1.default); // '/api' 엔드포인트에 요청이 들어오면 api 폴더로 분기
 app.use(function (err, req, res) {
     res.locals.message = err.message;
