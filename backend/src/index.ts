@@ -10,7 +10,7 @@ DataSource
     .then(() => {
         console.log("Data Source(DB Connection) has been initialized")
     })
-    .catch((err) => {
+    .catch((err: ErrorType) => {
         console.error("Error during Data Source initialized: ", err)
     })
 
