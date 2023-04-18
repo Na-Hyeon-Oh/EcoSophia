@@ -1,0 +1,14 @@
+@value white: white;
+@value black: black;
+
+@value point-indigo: #2E3898;
+@value point-gray: #D9D9D9;
+
+@value accent-red: #FF0000;
+@value accent-blue: #0018FF;
+
+@value point-background-color: rgba(46, 56, 152, 0.25);
+@value point-background-light-color: rgba(46, 56, 152, 0.05);
+@value point-background-vague-color: rgba(46, 56, 152, 0.02);
+@value point-background-mild-color: rgba(46, 56, 152, 0.15);
+@value point-mild-color: rgba(46, 56, 152, 0.5);
