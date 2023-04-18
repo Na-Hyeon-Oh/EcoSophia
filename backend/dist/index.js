@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
 const config_1 = __importDefault(require("./config"));
 const route_1 = __importDefault(require("./route"));
 const db_1 = __importDefault(require("./loader/db"));
@@ -17,7 +16,8 @@ db_1.default
     console.error("Error during Data Source initialized: ", err);
 });
 // Create app and Setup express app
-const app = (0, express_1.default)();
+const express = require('express');
+const app = express();
 const PORT = config_1.default.port;
 const bodyParser = require("body-parser");
 require('dotenv').config();

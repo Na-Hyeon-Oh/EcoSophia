@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "build": "npx tsc && node dist",
-    "start": "ts-node ./src/index.ts",
+    "start": "node ./dist/index.js",
     "dev": "nodemon",
-    "prod": "npm run build && npm run start"
+    "prod": "npm run build && npm run start",
+    "deploy": "gcloud app deploy"
   },
   "engines": {
     "node": ">=0.10.3 <15"
