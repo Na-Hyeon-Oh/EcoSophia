@@ -4,24 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27c27b39-e167-49e9-8163-48b9753056ad" name="Changes" comment="[ADD] api 결과 UI 반영 및 Redux 상태 관리">
+    <list default="true" id="27c27b39-e167-49e9-8163-48b9753056ad" name="Changes" comment="[ADD] 수입/지출 내역 및 결제수단 추가/삭제 with Redux">
+      <change afterPath="$PROJECT_DIR$/frontend/src/api/signUp.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/redux/actions/signUp.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/controller/history.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/controller/history.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/history.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/history.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/method.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/method.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/assets/tagList/tagList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/tagList/tagList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/model/History.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/model/History.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/model/Method.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/model/Method.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/redux/actions/history.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/actions/history.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/redux/actions/method.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/actions/method.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/redux/reducers/history.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/reducers/history.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/redux/reducers/method.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/reducers/method.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/components/accordionCard/AccordionCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/components/accordionCard/AccordionCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/addHistory/AddHistoryContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/addHistory/AddHistoryContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/dailyCalendar/DailyCalendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/dailyCalendar/DailyCalendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/user/method/addMethod/AddMethodForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/user/method/addMethod/AddMethodForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/user/method/methodList/UserMethodList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/user/method/methodList/UserMethodList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/redux/reducers/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/reducers/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/signUp/SignUpPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/signUp/SignUpPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +78,7 @@
       <workItem from="1681799367799" duration="181000" />
       <workItem from="1681799569904" duration="211000" />
       <workItem from="1681799796895" duration="2490000" />
-      <workItem from="1681802347117" duration="48016000" />
+      <workItem from="1681802347117" duration="49329000" />
     </task>
     <task id="LOCAL-00001" summary="merge 과정 중 frontend 유실 파일 추가">
       <created>1681799958892</created>
@@ -113,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681878323659</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[ADD] 수입/지출 내역 및 결제수단 추가/삭제 with Redux">
+      <created>1681886513252</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681886513252</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +141,7 @@
     <MESSAGE value="merge 과정 중 frontend 유실 파일 추가" />
     <MESSAGE value="보정" />
     <MESSAGE value="[ADD] api 결과 UI 반영 및 Redux 상태 관리" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADD] api 결과 UI 반영 및 Redux 상태 관리" />
+    <MESSAGE value="[ADD] 수입/지출 내역 및 결제수단 추가/삭제 with Redux" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD] 수입/지출 내역 및 결제수단 추가/삭제 with Redux" />
   </component>
 </project>

@@ -1,11 +1,23 @@
 import React from 'react';
 import SignInUpForm from '../../components/signInUpForm/SignInUpForm';
 import CardLayout from "../../components/cardLayout/CardLayout";
+import { SignInUpRequest } from '../../../model/SignInUpRequest';
 import Button from '@mui/material/Button';
 
+import { useDispatch } from 'react-redux';
+import signUpAction from '../../../redux/actions/signUp';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+
 const SignUpPage = () => {
-    const signUpHandler = () => {
-        window.location.href = "/home";
+    const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
+
+    const signUpHandler = async (data: SignInUpRequest) => {
+        try {
+            await dispatch(signUpAction(data));
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const signInHandler = () => {

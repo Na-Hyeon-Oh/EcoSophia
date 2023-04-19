@@ -13,7 +13,7 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        // sign-in
+        // sign-in/up
         saveUserId: (state, action) => {
             state.userId = action.payload;
         },
