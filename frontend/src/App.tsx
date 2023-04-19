@@ -23,25 +23,23 @@ function App() {
 
     return (
         <>
-            {
-                window.location.pathname !== '/home' && window.location.pathname !== '/'
-                ? (<div></div>)
-                : (<HomePage/>)
-            }
-
             <Router>
                 <Routes>
-                    <Route path="sign-in" element={<SignInPage />}></Route>
+                    <Route path="/" element={<Navigate to="/sign-in" />} />
+                    <Route path="sign-in">
+                        <Route
+                            path=""
+                            element={<SignInPage />}
+                        />
+                    </Route>
 
                     <Route path="sign-up" element={<SignUpPage />}></Route>
 
-                    <Route path="/" element={<Navigate to="/home" />} />
                     <Route path="home">
                         <Route
-                            path="home"
+                            path=""
                             element={<HomePage />}
                         />
-                        {/*<Route path=":id" element={<InternshipDetailPage info={info} />} />*/}
                         <Route path="*" element={<div>Not Found</div>} />
                     </Route>
 

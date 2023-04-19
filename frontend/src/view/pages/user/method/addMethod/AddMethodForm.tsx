@@ -27,7 +27,6 @@ const AddMethodForm = ({}) => {
 
         const enteredData: Method = {
             id: 1,
-            userId: 1,
             type: methodType,
             name: name,
         };

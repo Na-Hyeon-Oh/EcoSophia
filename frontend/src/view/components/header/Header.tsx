@@ -6,6 +6,11 @@ import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 
+import { useDispatch } from 'react-redux';
+import signOutAction from '../../../redux/actions/signOut';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+
 import styles from './header.module.css'
 
 const Header = ({option}: HeaderProps) => {
@@ -46,6 +51,7 @@ const Navigator = ({option}: HeaderProps) => {
 }
 
 const Profile = () => {
+    const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
     const [isClicked, setIsClicked] = useState<null | HTMLElement>(null);
 
     const menuClickedHandler = (event: React.MouseEvent<HTMLElement>) => {
@@ -56,9 +62,14 @@ const Profile = () => {
         setIsClicked(null);
     }
 
-    const signOutHandler = () => {
+    const signOutHandler = async () => {
         menuCloseHandler();
-        window.location.href = "/sign-in";
+        try {
+            await dispatch(signOutAction());
+        }
+        catch(error) {
+            console.log(error);
+        }
     }
 
     return (

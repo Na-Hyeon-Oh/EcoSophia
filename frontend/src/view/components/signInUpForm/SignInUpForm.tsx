@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { SignInUpRequest } from '../../../model/SignInUpRequest';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -24,12 +25,11 @@ const SignInUpForm = ({type, onSubmit} : SignInUpFormProps) => {
 
         const enteredData: SignInUpRequest = {
             email: email,
-            password: password
+            pw: password
         };
 
         // 로그인/회원가입
-        onSubmit();
-        console.log(enteredData);
+        onSubmit(enteredData);
     }
 
     return (
@@ -81,7 +81,7 @@ const SignInUpForm = ({type, onSubmit} : SignInUpFormProps) => {
 
 interface SignInUpFormProps {
     type: string;
-    onSubmit: () => void;
+    onSubmit: (data: SignInUpRequest) => void;
 }
 
 export default SignInUpForm;

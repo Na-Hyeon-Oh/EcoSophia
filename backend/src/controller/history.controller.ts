@@ -63,6 +63,7 @@ export async function getHistories(req: Request, res: Response): Promise<any> {
                 date: 'DESC'
             }
         });
+        console.log(histories);
 
         res.status(200).json(histories);
     } catch (error) {

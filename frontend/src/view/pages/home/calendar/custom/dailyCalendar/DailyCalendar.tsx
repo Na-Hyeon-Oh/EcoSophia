@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../../../../redux/store';
+
 import { CalendarProps } from '../CalendarProps.';
 import { Icon } from '@iconify/react';
 import { format, addDays, subDays, isSameDay } from 'date-fns';
 import AccordionCard from '../../../../../components/accordionCard/AccordionCard';
 import NumberUtils from '../../../../../../assets/utils/NumberUtils';
+import History from '../../../../../../model/History';
 
-import {testData} from '../../../../../../assets/testData';
+import { tagList } from '../../../../../../assets/tagList/tagList';
+import Tag from '../../../../../../model/Tag';
 
 import styles from '../calendar.module.css';
 import style from './dailyCalendar.module.css';
@@ -45,40 +50,63 @@ const RenderHeader = (selectedDT : Date, prevDay : any, nextDay : any) => {
 };
 
 const RenderCells = (selectedDT: Date) => {
-    let incomeCards = [];
-    let expenseCards = [];
-    for (let i = 0; i < testData.length; i++) {
-        if (isSameDay(testData[i].date, selectedDT)) {
-            let date: string = format(testData[i].date, "yyyy-MM-dd eee");
-            let price: string = NumberUtils(testData[i].price.toString()).addComma();
-            if(testData[i].price > 0)
-                incomeCards.push(
-                    <div className={style.card}>
-                        <AccordionCard smallLeftText={date} smallRightText={testData[i].by} leftText={testData[i].contents} rightText={price} tags={testData[i].tags} color={"#FF0000"}/>
-                    </div>
-                );
-            else
-                expenseCards.push(
-                    <div className={style.card}>
-                        <AccordionCard smallLeftText={date} smallRightText={testData[i].by} leftText={testData[i].contents} rightText={price} tags={testData[i].tags} color={"#0018FF"}/>
-                    </div>
-                );
-        }
+    const history = useSelector((state: RootState) => state.history);
+
+    if (history.isLoading) {
+        return <div>Loading...</div>;
     }
+    else if (history.error != null) {
+        alert("잠시 후에 다시 접속해주세요.");
+        window.location.href = "/sign-in";
+    }
+    else {
+        let incomeCards = [];
+        let expenseCards = [];
+        for (let i = 0; i < history.data.length; i++) {
+            if (isSameDay(new Date(history.data[i].date), new Date(selectedDT))) {
+                let price: string = NumberUtils(history.data[i].cost.toString()).addComma();
+                let tags: Array<Tag> = history.data[i].tags.map(tagName => {
+                    for (let i = 0; i < tagList.length; i++) {
+                        if (tagList[i].name == tagName) {
+                            return tagList[i];
+                        }
+                    }
+                    return null;
+                }).filter(tag => tag !== undefined) as Tag[];
 
-    return (
-        <div>
-            <div className={style.message_container}
-                style={{display: incomeCards.length === 0 && expenseCards.length === 0 ? "block": "none"}}>
-                수익/지출 내역이 존재하지 않습니다.
-            </div>
-            <div className ={style.cells_container}>
-                <div className={style.cells_column}>{incomeCards}</div>
-                <div className={style.cells_column}>{expenseCards}</div>
-            </div>
-        </div>
+                if (history.data[i].cost > 0)
+                    incomeCards.push(
+                        <div className={style.card}>
+                            <AccordionCard smallLeftText={history.data[i].date.toString()} smallRightText={history.data[i].method.name}
+                                           leftText={history.data[i].content} rightText={price} tags={tags}
+                                           color={"#FF0000"}/>
+                        </div>
+                    );
+                else
+                    expenseCards.push(
+                        <div className={style.card}>
+                            <AccordionCard smallLeftText={history.data[i].date.toString()} smallRightText={history.data[i].method.name}
+                                           leftText={history.data[i].content} rightText={price} tags={tags}
+                                           color={"#0018FF"}/>
+                        </div>
+                    );
+            }
+        }
 
-    );
+        return (
+            <div>
+                <div className={style.message_container}
+                     style={{display: incomeCards.length === 0 && expenseCards.length === 0 ? "block" : "none"}}>
+                    수익/지출 내역이 존재하지 않습니다.
+                </div>
+                <div className={style.cells_container}>
+                    <div className={style.cells_column}>{incomeCards}</div>
+                    <div className={style.cells_column}>{expenseCards}</div>
+                </div>
+            </div>
+
+        );
+    }
 };
 
 export default CustomDailyCalender

@@ -3,12 +3,11 @@ import { Method } from './Method';
 
 interface History {
     id: number,
-    userId: number,
-    date: Date | null | undefined,
-    by: Method,
+    date: Date,
+    method: Method,
     content: string,
-    cost: number | bigint,
-    tags: Array<Tag>,
+    cost: number,
+    tags: Array<string>,
 }
 
 export default History;

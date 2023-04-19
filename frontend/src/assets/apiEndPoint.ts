@@ -1,0 +1,1 @@
+export const apiEndPoint = 'http://localhost:8080/api';//'https://ecosophia.du.r.appspot.com/api';

@@ -1,3 +1,5 @@
+import History from '../../../../../model/History';
+
 export interface CalendarProps {
     todayDT: Date,
     setTodayDT: (todayDT: Date) => void,

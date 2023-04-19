@@ -1,4 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+import { RootState } from '../../../redux/store';
+import { fetchHistory } from '../../../redux/actions/history';
+import { fetchMethod } from '../../../redux/actions/method';
 
 import OptionContainer from './option/OptionContainer';
 import { Method } from '../../../model/Method';
@@ -11,34 +17,20 @@ import ReportContainer from './report/ReportContainer';
 import styles from './home.module.css';
 
 const HomeContainer = () => {
-    const methodList : Array<Method> = [
-        {
-            id: 0,
-            userId: 1,
-            type: MethodType.Cash,
-            name: "현금"
-        },
-        {
-            id: 1,
-            userId: 1,
-            type: MethodType.Card,
-            name: "우리은행/우리SumCheck카드"
-        },
-    ];
-    const [filter, setFilter] = useState<Array<Method>>([
-        {
-            id: 0,
-            userId: 1,
-            type: MethodType.Cash,
-            name: "현금"
-        },
-        {
-            id: 1,
-            userId: 1,
-            type: MethodType.Card,
-            name: "우리은행/우리SumCheck카드"
-        },
-    ]);
+    const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
+    const userId = useSelector((state: RootState) => state.auth.userId);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (userId) {
+            dispatch(fetchHistory(userId)).then(() =>
+                dispatch(fetchMethod(userId)).then(() => setLoading(false))
+            );
+        }
+    }, [dispatch, userId]);
+
+    const methodList = useSelector((state: RootState) => state.method.data);
+    const [filter, setFilter] = useState<Array<Method>>(methodList);
     const [calendarOption, setCalendarOption] = useState(CalendarType.MONTHLY);
     const [searchDate, setSearchDate] = useState(new Date());
 
@@ -50,18 +42,24 @@ const HomeContainer = () => {
         setSearchDate(date);
     }
 
-    return (
-        <div className = {styles.home_container}>
-            <div className = {styles.home_left_container}>
-                <OptionContainer methodList={methodList} filter={filter} onChangeFilter={setFilter} calendarOption={calendarOption} onClickCalendarOption={onClickCalendarOption}/>
-                <CalendarContainer option={calendarOption} onChangeSearchDate={onChangeSearchDate}/>
+    if (loading) {
+        return <div>Loading...</div>
+    }
+    else {
+        return (
+            <div className={styles.home_container}>
+                <div className={styles.home_left_container}>
+                    <OptionContainer methodList={methodList} filter={filter} onChangeFilter={setFilter}
+                                     calendarOption={calendarOption} onClickCalendarOption={onClickCalendarOption}/>
+                    <CalendarContainer option={calendarOption} onChangeSearchDate={onChangeSearchDate}/>
+                </div>
+                <div className={styles.home_right_container}>
+                    <ReportContainer calendarOption={calendarOption} searchDate={searchDate}/>
+                    <AddHistoryContainer/>
+                </div>
             </div>
-            <div className = {styles.home_right_container}>
-                <ReportContainer calendarOption={calendarOption} searchDate={searchDate}/>
-                <AddHistoryContainer/>
-            </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default HomeContainer;

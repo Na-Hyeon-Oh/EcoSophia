@@ -1,4 +1,9 @@
-import { useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+import { RootState } from '../../../../../redux/store';
+import { fetchMethod } from '../../../../../redux/actions/method';
 
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
@@ -10,7 +15,16 @@ import { methodList } from '../../../../../assets/testData'
 import styles from './userMethodList.module.css'
 
 const UserMethodList = ({}) => {
-    const [methods, setMethods] = useState(methodList);
+    const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
+    const userId = useSelector((state: RootState) => state.auth.userId);
+    const methodList = useSelector((state: RootState) => state.method.data);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (userId) {
+            dispatch(fetchMethod(userId)).then(() => setLoading(false));
+        }
+    }, [dispatch, userId]);
 
     const nextId = useRef(2);
     const nextUserId = useRef(1);
@@ -22,13 +36,13 @@ const UserMethodList = ({}) => {
             type: MethodType.Card,
             name: ""
         };
-        setMethods(methods.concat(method));
+        // addMethod
 
         nextId.current += 1;
     }
 
     const onRemove = (id: number) => {
-        setMethods(methods.filter(method => method.id !== id));
+        // deleteMethod
     }
 
     let cards = []

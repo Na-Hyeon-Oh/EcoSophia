@@ -21,11 +21,17 @@ const app = (0, express_1.default)();
 const PORT = config_1.default.port;
 const bodyParser = require("body-parser");
 require('dotenv').config();
+const cors = require('cors');
 // template rendering engine 설정
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // request body를 express에서 json으로 받아옴
+app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.get('/', (req, res) => {
     res.send('Hello Express!');
 });

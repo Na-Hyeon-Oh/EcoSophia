@@ -39,7 +39,6 @@ const AddHistoryForm = () => {
     const [date, setDate] = useState<Date | null | undefined>(new Date());
     const [method, setMethod] = useState<Method>({
         id: 0,
-        userId: 1,
         type: MethodType.Cash,
         name: "현금"
     });
@@ -103,29 +102,31 @@ const AddHistoryForm = () => {
 
     const submitHandler = (event: any) => {
         event.preventDefault();                 // avoid page reload
-        
-        const enteredData: History = {
-            id: 1,
-            userId: 1,
-            date: date,
-            by: method,
-            content: content,
-            cost: costType ? Number(NumberUtils(cost).deleteComma()) : (-1) * Number(NumberUtils(cost).deleteComma()),
-            tags: tags,
-        };
 
-        // 등록
-        //addHistory(enteredData);
-        console.log(enteredData);
+        if (date != null && date !== undefined) {
+            const stringTags: Array<string> = tags.map((tag) => tag.name);
 
-        initializeForm();
+            const enteredData: History = {
+                id: 1,
+                date: date,
+                method: method,
+                content: content,
+                cost: costType ? Number(NumberUtils(cost).deleteComma()) : (-1) * Number(NumberUtils(cost).deleteComma()),
+                tags: stringTags,
+            };
+
+            // 등록
+            //addHistory(enteredData);
+            console.log(enteredData);
+
+            initializeForm();
+        }
     }
 
     const initializeForm = () => {
         setDate(new Date());
         setMethod({
             id: 0,
-            userId: 1,
             type: MethodType.Cash,
             name: "현금"
         });
