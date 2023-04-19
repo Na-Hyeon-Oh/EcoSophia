@@ -1,17 +1,22 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from '../../../../redux/store';
+
 import ReactDatePicker from "../../../components/datePicker/DatePicker";
 import ReactMultiSelect from '../../../components/multiSelect/MultiSelect';
 import ReactDropDownList from '../../../components/dropDownList/DropDownList';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import History from "../../../../model/History";
+import { HistoryRequest } from "../../../../model/History";
 import NumberUtils from '../../../../assets/utils/NumberUtils';
 import Tag from '../../../../model/Tag';
 import { tagList } from '../../../../assets/tagList/tagList';
 import { Method } from '../../../../model/Method';
 import { MethodType } from '../../../../assets/enums/MethodType';
 import { ThemeProvider } from '@mui/material/styles';
-import { methodList } from '../../../../assets/testData';
+import { createHistory } from '../../../../redux/actions/history';
 
 import theme from '../../../../assets/styles/muiTheme';
 import styles from './addHistory.module.css';
@@ -34,7 +39,9 @@ const Title = () => {
 }
 
 const AddHistoryForm = () => {
-    //const [ { userId }, { addHistory }, { nextHistoryId }, { methodList } ] = useContext(I)
+    const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
+    const userId = useSelector((state: RootState) => state.auth.userId);
+    const methodList = useSelector((state: RootState) => state.method.data);
 
     const [date, setDate] = useState<Date | null | undefined>(new Date());
     const [method, setMethod] = useState<Method>({
@@ -100,24 +107,24 @@ const AddHistoryForm = () => {
         setTags(tags);
     };
 
-    const submitHandler = (event: any) => {
+    const submitHandler = async (event: any) => {
         event.preventDefault();                 // avoid page reload
 
         if (date != null && date !== undefined) {
             const stringTags: Array<string> = tags.map((tag) => tag.name);
 
-            const enteredData: History = {
-                id: 1,
-                date: date,
-                method: method,
+            const enteredData: HistoryRequest = {
+                date: date.toISOString().substr(0, 10),
+                methodId: getMethodValue(),
                 content: content,
                 cost: costType ? Number(NumberUtils(cost).deleteComma()) : (-1) * Number(NumberUtils(cost).deleteComma()),
                 tags: stringTags,
             };
 
             // 등록
-            //addHistory(enteredData);
-            console.log(enteredData);
+            if (userId) {
+                await dispatch(createHistory(userId, enteredData));
+            }
 
             initializeForm();
         }

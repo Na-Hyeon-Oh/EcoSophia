@@ -47,6 +47,8 @@ function App() {
                         path="user/method"
                         element={<UserMethodPage />}
                     />
+
+                    <Route path="*" element={<div>Not Found</div>} />
                 </Routes>
             </Router>
         </>

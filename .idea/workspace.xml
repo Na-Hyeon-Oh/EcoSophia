@@ -4,51 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27c27b39-e167-49e9-8163-48b9753056ad" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/frontend/src/api/history.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/api/method.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/api/signIn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/apiEndPoint.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/model/SignInUpResponse.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/redux/actions/history.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/redux/actions/method.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/redux/actions/signIn.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/redux/actions/signOut.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/redux/reducers/auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/redux/reducers/history.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/redux/reducers/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/redux/reducers/method.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/redux/store/index.ts" afterDir="false" />
+    <list default="true" id="27c27b39-e167-49e9-8163-48b9753056ad" name="Changes" comment="[ADD] api 결과 UI 반영 및 Redux 상태 관리">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dist/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dist/index.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/controller/history.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/controller/history.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/history.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/history.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/method.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/method.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/tagList/tagList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/tagList/tagList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/model/History.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/model/History.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/model/Method.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/model/Method.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/model/SignInUpRequest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/model/SignInUpRequest.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/components/header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/components/signInUpForm/SignInUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/components/signInUpForm/SignInUpForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/HomeContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/HomeContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/HomePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/HomePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/redux/actions/history.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/actions/history.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/redux/actions/method.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/actions/method.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/redux/reducers/history.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/reducers/history.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/redux/reducers/method.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/reducers/method.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/view/components/accordionCard/AccordionCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/components/accordionCard/AccordionCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/addHistory/AddHistoryContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/addHistory/AddHistoryContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/Calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/CalendarProps..tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/CalendarProps..tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/dailyCalendar/DailyCalendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/dailyCalendar/DailyCalendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/weeklyCalendar/WeeklyCalendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/weeklyCalendar/WeeklyCalendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/report/ReportContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/report/ReportContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/signIn/SignInPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/signIn/SignInPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/signUp/SignUpPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/signUp/SignUpPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/user/method/addMethod/AddMethodForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/user/method/addMethod/AddMethodForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/user/method/methodList/UserMethodList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/user/method/methodList/UserMethodList.tsx" afterDir="false" />
     </list>
@@ -119,7 +90,7 @@
       <workItem from="1681799367799" duration="181000" />
       <workItem from="1681799569904" duration="211000" />
       <workItem from="1681799796895" duration="2490000" />
-      <workItem from="1681802347117" duration="40017000" />
+      <workItem from="1681802347117" duration="48016000" />
     </task>
     <task id="LOCAL-00001" summary="merge 과정 중 frontend 유실 파일 추가">
       <created>1681799958892</created>
@@ -135,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681802150238</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="[ADD] api 결과 UI 반영 및 Redux 상태 관리">
+      <created>1681878323659</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681878323659</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +145,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="merge 과정 중 frontend 유실 파일 추가" />
     <MESSAGE value="보정" />
-    <option name="LAST_COMMIT_MESSAGE" value="보정" />
+    <MESSAGE value="[ADD] api 결과 UI 반영 및 Redux 상태 관리" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD] api 결과 UI 반영 및 Redux 상태 관리" />
   </component>
 </project>

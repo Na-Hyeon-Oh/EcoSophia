@@ -24,6 +24,18 @@ const historyReducer = (
             return { ...state, isLoading: false, data: action.payload };
         case HistoryActionTypes.FETCH_HISTORY_ERROR:
             return { ...state, isLoading: false, error: action.payload };
+        case HistoryActionTypes.CREATE_HISTORY:
+            return { ...state, isLoading: true, error: null };
+        case HistoryActionTypes.CREATE_HISTORY_SUCCESS:
+            return { ...state, isLoading: false, data: [...state.data, action.payload] };
+        case HistoryActionTypes.CREATE_HISTORY_ERROR:
+            return { ...state, isLoading: false, error: action.payload };
+        case HistoryActionTypes.REMOVE_HISTORY:
+            return { ...state, isLoading: true, error: null };
+        case HistoryActionTypes.REMOVE_HISTORY_SUCCESS:
+            return { ...state, isLoading: false, data: state.data.filter((history) => history.id !== action.payload)};
+        case HistoryActionTypes.REMOVE_HISTORY_ERROR:
+            return { ...state, isLoading: false, error: action.payload };
         default:
             return state;
     }

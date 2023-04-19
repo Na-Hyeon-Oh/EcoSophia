@@ -24,6 +24,18 @@ const methodReducer = (
             return { ...state, isLoading: false, data: action.payload };
         case MethodActionTypes.FETCH_METHOD_ERROR:
             return { ...state, isLoading: false, error: action.payload };
+        case MethodActionTypes.CREATE_METHOD:
+            return { ...state, isLoading: true, error: null };
+        case MethodActionTypes.CREATE_METHOD_SUCCESS:
+            return { ...state, isLoading: false, data: [...state.data, action.payload] };
+        case MethodActionTypes.CREATE_METHOD_ERROR:
+            return { ...state, isLoading: false, error: action.payload };
+        case MethodActionTypes.REMOVE_METHOD:
+            return { ...state, isLoading: true, error: null };
+        case MethodActionTypes.REMOVE_METHOD_SUCCESS:
+            return { ...state, isLoading: false, data: state.data.filter((method) => method.id !== action.payload)};
+        case MethodActionTypes.REMOVE_METHOD_ERROR:
+            return { ...state, isLoading: false, error: action.payload };
         default:
             return state;
     }

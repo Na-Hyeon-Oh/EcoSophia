@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { RootState } from '../../../../../redux/store';
-import { fetchMethod } from '../../../../../redux/actions/method';
+import { fetchMethod, removeMethod } from '../../../../../redux/actions/method';
 
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
@@ -26,23 +26,10 @@ const UserMethodList = ({}) => {
         }
     }, [dispatch, userId]);
 
-    const nextId = useRef(2);
-    const nextUserId = useRef(1);
-
-    const onCreate = () => {
-        const method = {
-            id: nextId.current,
-            userId: nextUserId.current,
-            type: MethodType.Card,
-            name: ""
-        };
-        // addMethod
-
-        nextId.current += 1;
-    }
-
-    const onRemove = (id: number) => {
-        // deleteMethod
+    const onRemove = async (id: number) => {
+        if (userId) {
+            await dispatch(removeMethod(userId, id));
+        }
     }
 
     let cards = []
@@ -51,7 +38,7 @@ const UserMethodList = ({}) => {
             <Card className={styles.user_method_card} sx={{ minWidth: 275 }}>
                 {methodList[i].name}
                 <CardActions>
-                    <IconButton>{
+                    <IconButton onClick={() => onRemove(methodList[i].id) }>{
                         <IoMdRemoveCircle/>
                     }</IconButton>
                 </CardActions>

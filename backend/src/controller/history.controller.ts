@@ -42,7 +42,7 @@ export async function createHistory(req: Request, res: Response): Promise<any> {
         });
         await historyRepository.save(history);
 
-        res.status(200).json(history);
+        res.status(200).json();
     } catch (error) {
         console.error(error);
         res.status(500).send('Server error');
@@ -154,7 +154,7 @@ export async function deleteHistory(req: Request, res: Response): Promise<any> {
 
         await historyRepository.remove(history);
 
-        res.status(200).json({ message: 'History deleted' });
+        res.status(200).json({ message: 'History deleted', id: id });
     } catch (error) {
         console.error(error);
         res.status(500).send('Server error');

@@ -1,4 +1,10 @@
-import { useState } from 'react'
+import React, { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from '../../../../../redux/store';
+import { createMethod } from '../../../../../redux/actions/method';
+
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material/styles';
@@ -10,6 +16,9 @@ import ReactDropDownList from '../../../../components/dropDownList/DropDownList'
 import styles from './addMethod.module.css';
 
 const AddMethodForm = ({}) => {
+    const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
+    const userId = useSelector((state: RootState) => state.auth.userId);
+
     const [name, setName] = useState("");
     const [methodType, setMethodType] = useState<MethodType>(MethodType.Card);
     const [key, setKey] = useState(0);
@@ -22,7 +31,7 @@ const AddMethodForm = ({}) => {
         setName(event.target.value);
     }
 
-    const submitHandler = (event: any) => {
+    const submitHandler = async (event: any) => {
         event.preventDefault();                 // avoid page reload
 
         const enteredData: Method = {
@@ -32,7 +41,9 @@ const AddMethodForm = ({}) => {
         };
 
         // 등록
-        console.log(enteredData);
+        if (userId) {
+            await dispatch(createMethod(userId, enteredData));
+        }
 
         initializeForm();
     }

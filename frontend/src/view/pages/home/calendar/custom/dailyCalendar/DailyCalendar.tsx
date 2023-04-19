@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../../../../redux/store';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+import { removeHistory } from '../../../../../../redux/actions/history';
 
 import { CalendarProps } from '../CalendarProps.';
 import { Icon } from '@iconify/react';
@@ -50,7 +53,15 @@ const RenderHeader = (selectedDT : Date, prevDay : any, nextDay : any) => {
 };
 
 const RenderCells = (selectedDT: Date) => {
+    const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
+    const userId = useSelector((state: RootState) => state.auth.userId);
     const history = useSelector((state: RootState) => state.history);
+
+    const onRemove = async (id: number) => {
+        if (userId) {
+            await dispatch(removeHistory(userId, id));
+        }
+    }
 
     if (history.isLoading) {
         return <div>Loading...</div>;
@@ -64,6 +75,10 @@ const RenderCells = (selectedDT: Date) => {
         let expenseCards = [];
         for (let i = 0; i < history.data.length; i++) {
             if (isSameDay(new Date(history.data[i].date), new Date(selectedDT))) {
+                let date: string = history.data[i].date.toString();
+                if (date.length > 11) {
+                    date = format(selectedDT, 'yyyy.MM.dd eee');
+                }
                 let price: string = NumberUtils(history.data[i].cost.toString()).addComma();
                 let tags: Array<Tag> = history.data[i].tags.map(tagName => {
                     for (let i = 0; i < tagList.length; i++) {
@@ -77,17 +92,19 @@ const RenderCells = (selectedDT: Date) => {
                 if (history.data[i].cost > 0)
                     incomeCards.push(
                         <div className={style.card}>
-                            <AccordionCard smallLeftText={history.data[i].date.toString()} smallRightText={history.data[i].method.name}
+                            <AccordionCard smallLeftText={date} smallRightText={history.data[i].method.name}
                                            leftText={history.data[i].content} rightText={price} tags={tags}
-                                           color={"#FF0000"}/>
+                                           color={"#FF0000"}
+                                           id = {history.data[i].id} onRemove={onRemove}/>
                         </div>
                     );
                 else
                     expenseCards.push(
                         <div className={style.card}>
-                            <AccordionCard smallLeftText={history.data[i].date.toString()} smallRightText={history.data[i].method.name}
+                            <AccordionCard smallLeftText={date} smallRightText={history.data[i].method.name}
                                            leftText={history.data[i].content} rightText={price} tags={tags}
-                                           color={"#0018FF"}/>
+                                           color={"#0018FF"}
+                                           id = {history.data[i].id} onRemove={() => onRemove(history.data[i].id)}/>
                         </div>
                     );
             }

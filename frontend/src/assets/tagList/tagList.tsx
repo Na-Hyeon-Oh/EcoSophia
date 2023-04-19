@@ -8,5 +8,7 @@ export const tagList: Array<Tag> = [
     { id: 5, name: "저축/투자" },
     { id: 6, name: "양육비" },
     { id: 7, name: "생활비" },
-    { id: 10, name: "기타" }
+    { id: 8, name: "월급" },
+    { id: 9, name: "기타수입" },
+    { id: 12, name: "기타" }
 ];
