@@ -56,6 +56,7 @@ const SignInUpForm = ({type, onSubmit} : SignInUpFormProps) => {
                         id="standard-flexible" variant="standard" fullWidth
                         value={password}
                         onChange={passwordChangeHandler}
+                        type="password"
                         style={{minWidth: 250}}
                     ></TextField>
                     <div className={styles.form_error}
