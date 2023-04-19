@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27c27b39-e167-49e9-8163-48b9753056ad" name="Changes" comment="[FIX] 회원가입 시 결제수단 default (현금) dispatch">
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/components/signInUpForm/SignInUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/components/signInUpForm/SignInUpForm.tsx" afterDir="false" />
+    <list default="true" id="27c27b39-e167-49e9-8163-48b9753056ad" name="Changes" comment="[FIX] 패스워드 암호화">
+      <change afterPath="$PROJECT_DIR$/frontend/src/redux/actions/filter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/redux/reducers/filter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/redux/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/reducers/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/HomeContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/HomeContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/Calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/Calendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/dailyCalendar/DailyCalendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/dailyCalendar/DailyCalendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/weeklyCalendar/WeeklyCalendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/calendar/custom/weeklyCalendar/WeeklyCalendar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/view/pages/home/report/ReportContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/pages/home/report/ReportContainer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +82,7 @@
       <workItem from="1681799367799" duration="181000" />
       <workItem from="1681799569904" duration="211000" />
       <workItem from="1681799796895" duration="2490000" />
-      <workItem from="1681802347117" duration="50466000" />
+      <workItem from="1681802347117" duration="53697000" />
     </task>
     <task id="LOCAL-00001" summary="merge 과정 중 frontend 유실 파일 추가">
       <created>1681799958892</created>
@@ -118,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681888722297</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="[FIX] 패스워드 암호화">
+      <created>1681888865589</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681888865589</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +169,7 @@
     <MESSAGE value="[ADD] 수입/지출 내역 및 결제수단 추가/삭제 with Redux" />
     <MESSAGE value="[ADD] 회원가입" />
     <MESSAGE value="[FIX] 회원가입 시 결제수단 default (현금) dispatch" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FIX] 회원가입 시 결제수단 default (현금) dispatch" />
+    <MESSAGE value="[FIX] 패스워드 암호화" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FIX] 패스워드 암호화" />
   </component>
 </project>

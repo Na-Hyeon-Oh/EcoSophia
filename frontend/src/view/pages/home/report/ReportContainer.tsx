@@ -28,6 +28,7 @@ const Title = () => {
 
 const Report = ({calendarOption, searchDate}: ReportProps) => {
     const history = useSelector((state: RootState) => state.history);
+    const filter = useSelector((state: RootState) => state.filter.selectedMethods);
 
     if (history.isLoading) {
         return <div className={styles.report}>
@@ -53,8 +54,17 @@ const Report = ({calendarOption, searchDate}: ReportProps) => {
             }
 
             if (isContained) {
-                if (history.data[i].cost > 0) incomeSum += history.data[i].cost;
-                else expenseSum += history.data[i].cost;
+                let filtered = true
+                for (let j = 0; j < filter.length; j++ ) {
+                    if (filter[j].id == history.data[i].method.id && filter[j].name == history.data[i].method.name) {
+                        filtered = false
+                        break
+                    }
+                }
+                if (!filtered) {
+                    if (history.data[i].cost > 0) incomeSum += history.data[i].cost;
+                    else expenseSum += history.data[i].cost;
+                }
             }
         }
         return (

@@ -56,6 +56,7 @@ const RenderCells = (selectedDT: Date) => {
     const dispatch: ThunkDispatch<any, any, AnyAction> = useDispatch();
     const userId = useSelector((state: RootState) => state.auth.userId);
     const history = useSelector((state: RootState) => state.history);
+    const filter = useSelector((state: RootState) => state.filter.selectedMethods);
 
     const onRemove = async (id: number) => {
         if (userId) {
@@ -74,39 +75,48 @@ const RenderCells = (selectedDT: Date) => {
         let incomeCards = [];
         let expenseCards = [];
         for (let i = 0; i < history.data.length; i++) {
-            if (isSameDay(new Date(history.data[i].date), new Date(selectedDT))) {
-                let date: string = history.data[i].date.toString();
-                if (date.length > 11) {
-                    date = format(selectedDT, 'yyyy.MM.dd eee');
+            let filtered = true
+            for (let j = 0; j < filter.length; j++ ) {
+                if (filter[j].id == history.data[i].method.id && filter[j].name == history.data[i].method.name) {
+                    filtered = false
+                    break
                 }
-                let price: string = NumberUtils(history.data[i].cost.toString()).addComma();
-                let tags: Array<Tag> = history.data[i].tags.map(tagName => {
-                    for (let i = 0; i < tagList.length; i++) {
-                        if (tagList[i].name == tagName) {
-                            return tagList[i];
-                        }
+            }
+            if (!filtered) {
+                if (isSameDay(new Date(history.data[i].date), new Date(selectedDT))) {
+                    let date: string = history.data[i].date.toString();
+                    if (date.length > 11) {
+                        date = format(selectedDT, 'yyyy.MM.dd eee');
                     }
-                    return null;
-                }).filter(tag => tag !== undefined) as Tag[];
+                    let price: string = NumberUtils(history.data[i].cost.toString()).addComma();
+                    let tags: Array<Tag> = history.data[i].tags.map(tagName => {
+                        for (let i = 0; i < tagList.length; i++) {
+                            if (tagList[i].name == tagName) {
+                                return tagList[i];
+                            }
+                        }
+                        return null;
+                    }).filter(tag => tag !== undefined) as Tag[];
 
-                if (history.data[i].cost > 0)
-                    incomeCards.push(
-                        <div className={style.card}>
-                            <AccordionCard smallLeftText={date} smallRightText={history.data[i].method.name}
-                                           leftText={history.data[i].content} rightText={price} tags={tags}
-                                           color={"#FF0000"}
-                                           id = {history.data[i].id} onRemove={onRemove}/>
-                        </div>
-                    );
-                else
-                    expenseCards.push(
-                        <div className={style.card}>
-                            <AccordionCard smallLeftText={date} smallRightText={history.data[i].method.name}
-                                           leftText={history.data[i].content} rightText={price} tags={tags}
-                                           color={"#0018FF"}
-                                           id = {history.data[i].id} onRemove={() => onRemove(history.data[i].id)}/>
-                        </div>
-                    );
+                    if (history.data[i].cost > 0)
+                        incomeCards.push(
+                            <div className={style.card}>
+                                <AccordionCard smallLeftText={date} smallRightText={history.data[i].method.name}
+                                               leftText={history.data[i].content} rightText={price} tags={tags}
+                                               color={"#FF0000"}
+                                               id = {history.data[i].id} onRemove={onRemove}/>
+                            </div>
+                        );
+                    else
+                        expenseCards.push(
+                            <div className={style.card}>
+                                <AccordionCard smallLeftText={date} smallRightText={history.data[i].method.name}
+                                               leftText={history.data[i].content} rightText={price} tags={tags}
+                                               color={"#0018FF"}
+                                               id = {history.data[i].id} onRemove={() => onRemove(history.data[i].id)}/>
+                            </div>
+                        );
+                }
             }
         }
 

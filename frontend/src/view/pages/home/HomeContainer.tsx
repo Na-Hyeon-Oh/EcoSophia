@@ -5,6 +5,7 @@ import { AnyAction } from 'redux';
 import { RootState } from '../../../redux/store';
 import { fetchHistory } from '../../../redux/actions/history';
 import { fetchMethod } from '../../../redux/actions/method';
+import { updateFilter } from '../../../redux/actions/filter';
 
 import OptionContainer from './option/OptionContainer';
 import { Method } from '../../../model/Method';
@@ -30,9 +31,19 @@ const HomeContainer = () => {
     }, [dispatch, userId]);
 
     const methodList = useSelector((state: RootState) => state.method.data);
-    const [filter, setFilter] = useState<Array<Method>>(methodList);
+    const filter = methodList;
     const [calendarOption, setCalendarOption] = useState(CalendarType.MONTHLY);
     const [searchDate, setSearchDate] = useState(new Date());
+
+    useEffect(() => {
+        if (userId) {
+            dispatch(updateFilter(methodList));
+        }
+    }, [dispatch, methodList]);
+
+    const onChangeFilter = (value: Array<Method>) => {
+        dispatch(updateFilter(value));
+    };
 
     const onClickCalendarOption = (option : CalendarType) : void => {
         setCalendarOption(option);
@@ -49,7 +60,7 @@ const HomeContainer = () => {
         return (
             <div className={styles.home_container}>
                 <div className={styles.home_left_container}>
-                    <OptionContainer methodList={methodList} filter={filter} onChangeFilter={setFilter}
+                    <OptionContainer methodList={methodList} filter={filter} onChangeFilter={onChangeFilter}
                                      calendarOption={calendarOption} onClickCalendarOption={onClickCalendarOption}/>
                     <CalendarContainer option={calendarOption} onChangeSearchDate={onChangeSearchDate}/>
                 </div>

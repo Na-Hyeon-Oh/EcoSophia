@@ -67,6 +67,7 @@ const RenderDays = () => {
 
 const RenderCells = ( todayDT: Date, currentDT : Date, selectedDate : Date, onDateClick : any) => {
     const history = useSelector((state: RootState) => state.history);
+    const filter = useSelector((state: RootState) => state.filter.selectedMethods);
 
     if (history.isLoading) {
         return <div>Loading...</div>;
@@ -90,9 +91,18 @@ const RenderCells = ( todayDT: Date, currentDT : Date, selectedDate : Date, onDa
             let incomeSum: number = 0;
             let expenseSum: number = 0;
             for (let i = 0; i < history.data.length; i++) {
-                if (isSameDay(new Date(cloneDay), new Date(history.data[i].date))) {
-                    if (history.data[i].cost > 0) incomeSum += history.data[i].cost;
-                    else expenseSum += history.data[i].cost;
+                let filtered = true
+                for (let j = 0; j < filter.length; j++ ) {
+                    if (filter[j].id == history.data[i].method.id && filter[j].name == history.data[i].method.name) {
+                        filtered = false
+                        break
+                    }
+                }
+                if (!filtered) {
+                    if (isSameDay(new Date(cloneDay), new Date(history.data[i].date))) {
+                        if (history.data[i].cost > 0) incomeSum += history.data[i].cost;
+                        else expenseSum += history.data[i].cost;
+                    }
                 }
             }
             let income: string = NumberUtils(incomeSum.toString()).addComma();
