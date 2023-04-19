@@ -44,11 +44,7 @@ const AddHistoryForm = () => {
     const methodList = useSelector((state: RootState) => state.method.data);
 
     const [date, setDate] = useState<Date | null | undefined>(new Date());
-    const [method, setMethod] = useState<Method>({
-        id: 0,
-        type: MethodType.Cash,
-        name: "현금"
-    });
+    const [method, setMethod] = useState<Method>(methodList[0]);
     const [cost, setCost] = useState("0");
     const [costType, setCostType] = useState(true);
     const [content, setContent] = useState("");
@@ -132,11 +128,7 @@ const AddHistoryForm = () => {
 
     const initializeForm = () => {
         setDate(new Date());
-        setMethod({
-            id: 0,
-            type: MethodType.Cash,
-            name: "현금"
-        });
+        setMethod(methodList[0]);
         setContent("");
         setCost("0");
         setTags([]);
